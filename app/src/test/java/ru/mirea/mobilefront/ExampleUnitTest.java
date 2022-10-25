@@ -1,4 +1,4 @@
-package ru.mirea.androidfrontapp;
+package ru.mirea.mobilefront;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package ru.mirea.androidfrontapp;
+package ru.mirea.mobilefront;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("ru.mirea.androidfrontapp", appContext.getPackageName());
+        assertEquals("ru.mirea.mobilefront", appContext.getPackageName());
     }
 }
