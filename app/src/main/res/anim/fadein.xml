@@ -2,9 +2,11 @@
     android:fillAfter="true" >
 
     <alpha
-        android:duration="1000"
-        android:fromAlpha="0.0"
+        android:duration="700"
+        android:fromAlpha="0.3"
         android:interpolator="@android:anim/accelerate_interpolator"
         android:toAlpha="1.0" />
+
+
 
 </set>
