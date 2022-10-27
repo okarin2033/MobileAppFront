@@ -20,8 +20,8 @@ public class MainActivity extends AppCompatActivity {
         testforanim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Animation An1 = AnimationUtils.loadAnimation(MainActivity.this,R.anim.bounce);//Получаем анимацию
-                testforanim.startAnimation(An1);//Запуск анимации кнопки
+                Animation Bounce = AnimationUtils.loadAnimation(MainActivity.this,R.anim.bounce);//Получаем анимацию
+                testforanim.startAnimation(Bounce);//Запуск анимации кнопки
             }
         });
 
