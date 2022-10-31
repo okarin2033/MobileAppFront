@@ -1,6 +1,8 @@
 package ru.mirea.mobilefront;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
@@ -48,20 +50,22 @@ public class MainActivity extends AppCompatActivity {
         passwordField=(EditText)findViewById(R.id.password_text);
         loginButton = (Button)findViewById(R.id.login_button);
         loginButton.setOnClickListener(new View.OnClickListener() {
-            @SneakyThrows
             @Override
             public void onClick(View view) {
-                String token = authService.login(loginField.getText().toString()
+                authService.login(loginField.getText().toString()
                         ,passwordField.getText().toString());
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                textView.setText(token);
+              //  Здесь врубается кнопка логина, загрузочка все такое ее надо будет вырубить
+                //  через секунд 10 в случае безуспешности логина и все такое
             }
         });
-
+        //Подписка на изменение токена
+        MutableLiveData<String> liveData = AuthService.getLiveData();
+        liveData.observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String userToken) {
+                textView.setText(userToken);
+            }
+        });
     }
 
     private void changeViewColor(View view) {

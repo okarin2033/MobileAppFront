@@ -1,6 +1,8 @@
 package ru.mirea.mobilefront.service;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -16,23 +18,24 @@ import ru.mirea.mobilefront.dto.LoginFormDto;
 import ru.mirea.mobilefront.dto.TokenDto;
 import ru.mirea.mobilefront.service.retrofit.LoginApi;
 
-public class AuthService{
+public class AuthService {
     Retrofit retrofit = new Retrofit.Builder().baseUrl("http://192.168.1.53:8080/")
             .addConverterFactory(JacksonConverterFactory.create())
             .build();
     LoginApi loginApi = retrofit.create(LoginApi.class);
 
-    private static LoginFormDto loginFormDto = new LoginFormDto();
+    private static MutableLiveData<String> LoginLiveData = new MutableLiveData<String>();
+
     @Getter
     private static String userToken = null;
 
     public LoginFormDto test() {
+        LoginFormDto loginFormDto = new LoginFormDto();
         Call<LoginFormDto> call = loginApi.getLoginForm();
          call.enqueue(new Callback<LoginFormDto>() {
             @Override
             public void onResponse(Call<LoginFormDto> call, Response<LoginFormDto> response) {
                 System.out.println(loginFormDto);
-
             }
 
             @Override
@@ -44,7 +47,7 @@ public class AuthService{
         return  loginFormDto;
     }
 
-    public String login(String username, String password) throws IOException {
+    public String login(String username, String password) {
         LoginFormDto dto = new LoginFormDto();
         dto.setPassword(password);
         dto.setUsername(username);
@@ -55,6 +58,7 @@ public class AuthService{
                 TokenDto tokenDto = response.body();
                 System.out.println(tokenDto.getToken());
                 userToken = tokenDto.getToken();
+                LoginLiveData.postValue(userToken);
             }
 
             @Override
@@ -64,5 +68,9 @@ public class AuthService{
             }
         });
         return userToken;
+    }
+
+    public static MutableLiveData<String> getLiveData(){
+        return LoginLiveData;
     }
 }
