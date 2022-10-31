@@ -6,32 +6,30 @@ import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.jackson.JacksonConverterFactory;
+import lombok.SneakyThrows;
 import ru.mirea.mobilefront.dto.LoginFormDto;
-import ru.mirea.mobilefront.service.retrofit.JsonPlaceHolderApi;
+import ru.mirea.mobilefront.service.AuthService;
 
 public class MainActivity extends AppCompatActivity {
     Button testforanim;//переменная для id кнопки (для анимации)
-
+    Button loginButton;
+    EditText loginField;
+    EditText passwordField;
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AuthService authService = new AuthService();
+        TextView textView = (TextView) findViewById(R.id.textView);
 
         testforanim=(Button)findViewById(R.id.switch_remember);//получаем id кнопочки
         testforanim.setOnClickListener(new View.OnClickListener() {
@@ -39,39 +37,32 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Animation Bounce = AnimationUtils.loadAnimation(MainActivity.this,R.anim.fadein); //лучаем анимацию
                 testforanim.startAnimation(Bounce);//Запуск анимации кнопки
+                LoginFormDto dto = null;
+                dto = authService.test();
+                //changeViewColor(view);//вызов метода снизу
+            }
+        });
 
-
-                Retrofit retrofit = new Retrofit.Builder().baseUrl("http://192.168.56.1:8080/")
-                        .addConverterFactory(JacksonConverterFactory.create())
-                        .build();
-
-                JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
-                Call<LoginFormDto> call = jsonPlaceHolderApi.getLoginForm();
-                call.enqueue(new Callback<LoginFormDto>() {
-                                 @Override
-                                 public void onResponse(Call<LoginFormDto> call, Response<LoginFormDto> response) {
-                                     TextView textView = (TextView) findViewById(R.id.textView);
-                                     LoginFormDto dto = response.body();
-                                     textView.setText(dto.getUsername());
-
-                                 }
-
-                                 @Override
-                                 public void onFailure(Call<LoginFormDto> call, Throwable t) {
-                                     System.out.println("Error on get request");
-                                     t.printStackTrace();
-                                 }
-                             });
-
-                        //changeViewColor(view);//вызов метода снизу
+        //Логин юзера
+        loginField=(EditText)findViewById(R.id.login_text);
+        passwordField=(EditText)findViewById(R.id.password_text);
+        loginButton = (Button)findViewById(R.id.login_button);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @SneakyThrows
+            @Override
+            public void onClick(View view) {
+                String token = authService.login(loginField.getText().toString()
+                        ,passwordField.getText().toString());
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                textView.setText(token);
             }
         });
 
     }
-
-
-
-
 
     private void changeViewColor(View view) {
         // Load initial and final colors.
