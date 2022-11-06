@@ -4,101 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Menu"
+    android:alpha="1"
+    android:background="@android:color/system_accent2_50"
     android:gravity="center"
     android:orientation="horizontal"
+    app:backgroundTint="@color/material_dynamic_primary70"
+    tools:context=".MenuActivity"
     tools:ignore="MissingConstraints"
-    >
+    tools:targetApi="s">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="50dp"
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_width="412dp"
         android:layout_height="50dp"
-        android:layout_margin="5dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
+        app:tabMode="auto"
+        tools:layout_editor_absoluteX="1dp">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/book_panel_24"
+
+            tools:layout_editor_absoluteX="149dp"
+            tools:layout_editor_absoluteY="241dp" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/search_24"
+
+            tools:layout_editor_absoluteX="149dp"
+            tools:layout_editor_absoluteY="241dp" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/basket_24"
+
+            tools:layout_editor_absoluteX="184dp"
+            tools:layout_editor_absoluteY="621dp" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/menu_24"
+
+            tools:layout_editor_absoluteX="184dp"
+            tools:layout_editor_absoluteY="621dp" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/person_24"
+
+            tools:layout_editor_absoluteX="274dp"
+            tools:layout_editor_absoluteY="224dp" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.008"
-        tools:ignore="MissingConstraints"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent" >
 
-    <Button
-        android:id="@+id/basket_btn"
-        android:layout_width="83dp"
-        android:layout_height="44dp"
-        android:layout_margin="5dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/secondary_btn"
-
-        android:drawableTop="@drawable/basket_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
-        app:layout_constraintStart_toEndOf="@+id/menu_btn"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/menu_btn"
-        android:layout_width="83dp"
-        android:layout_height="44dp"
-        android:layout_margin="5dp"
-
-        android:layout_marginTop="12dp"
-        android:background="@drawable/secondary_btn"
-        android:drawableTop="@drawable/menu_24"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.652"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/heart_btn"
-        android:layout_width="83dp"
-        android:layout_height="44dp"
-        android:layout_margin="5dp"
-        android:layout_marginTop="12dp"
-
-        android:background="@drawable/secondary_btn"
-        android:drawableTop="@drawable/heart_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.338"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/search_btn"
-        android:layout_width="83dp"
-        android:layout_height="44dp"
-        android:layout_margin="5dp"
-        android:layout_marginTop="12dp"
-
-        android:background="@drawable/secondary_btn"
-        android:drawableTop="@drawable/search_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/heart_btn"
-        app:layout_constraintHorizontal_bias="0.347"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
-        app:layout_constraintVertical_bias="0.0"
-         />
-
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="409dp"
-        android:layout_height="603dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="67dp"
-        >
-    </FrameLayout>
+    </androidx.viewpager.widget.ViewPager>
 </androidx.constraintlayout.widget.ConstraintLayout>

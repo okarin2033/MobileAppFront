@@ -1,4 +1,4 @@
-package ru.mirea.mobilefront;
+package ru.mirea.mobilefront.fragments;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import ru.mirea.mobilefront.R;
 
 /**
  * A simple {@link Fragment} subclass.

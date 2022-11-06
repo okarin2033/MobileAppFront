@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -16,18 +17,27 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import lombok.SneakyThrows;
+
 import ru.mirea.mobilefront.dto.LoginFormDto;
 import ru.mirea.mobilefront.service.AuthService;
 
 public class MainActivity extends AppCompatActivity {
+//private lateinit var binding: ActivityMainBinding;
+// - эта хуетень не работает, она на Котлине, ебенься с ней сам
     Button testforanim;//переменная для id кнопки (для анимации)
     Button loginButton;
     EditText loginField;
     EditText passwordField;
 
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Intent intent = new Intent(this, MenuActivity.class);
+       startActivity(intent);
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         AuthService authService = new AuthService();
