@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="2"
+        android:text="1"
         android:gravity="center"/>
 
 </ScrollView>
