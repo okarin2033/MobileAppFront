@@ -18,3 +18,4 @@ public class profile_fragment extends Fragment {
         return (ViewGroup)inflater.inflate(R.layout.fragment_profile,container,false);
     }
 }
+

@@ -11,9 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import ru.mirea.mobilefront.R;
 
-
-
-public class basket_fragment extends Fragment{
+public class basket_fragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

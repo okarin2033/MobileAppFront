@@ -11,8 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import ru.mirea.mobilefront.R;
 
-
-public class book_fragment extends Fragment{
+public class book_fragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:alpha="1"
-    android:background="@android:color/system_accent2_50"
-    android:gravity="center"
-    android:orientation="horizontal"
-    app:backgroundTint="@color/material_dynamic_primary70"
-    tools:context=".MenuActivity"
-    tools:ignore="MissingConstraints"
-    tools:targetApi="s">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager2"
+        android:layout_width="match_parent"
+        android:layout_height="700dp"
+        android:alpha="1"
+        android:background="@android:color/system_accent2_50"
+        android:orientation="horizontal"
+        app:backgroundTint="@color/material_dynamic_primary70"
+        tools:context=".MenuActivity"
+        tools:ignore="MissingConstraints"
+        tools:targetApi="s">
+    </androidx.viewpager2.widget.ViewPager2>
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tablayout"
+        android:id="@+id/tabLayout"
         android:layout_width="412dp"
         android:layout_height="50dp"
-
+        android:layout_gravity="bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:tabMode="auto"
-        tools:layout_editor_absoluteX="1dp">
+        app:tabIndicatorAnimationMode="elastic"
+        tools:layout_editor_absoluteX="1dp"
+        >
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
@@ -63,15 +71,4 @@
             tools:layout_editor_absoluteX="274dp"
             tools:layout_editor_absoluteY="224dp" />
     </com.google.android.material.tabs.TabLayout>
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/pager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
-
-    </androidx.viewpager2.widget.ViewPager2>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
