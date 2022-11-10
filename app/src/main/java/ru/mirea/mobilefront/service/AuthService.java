@@ -19,15 +19,15 @@ import ru.mirea.mobilefront.dto.TokenDto;
 import ru.mirea.mobilefront.service.retrofit.LoginApi;
 
 public class AuthService {
-    Retrofit retrofit = new Retrofit.Builder().baseUrl("http://192.168.1.53:8080/")
+    Retrofit retrofit = new Retrofit.Builder().baseUrl(Configuration.SERVER_URL)
             .addConverterFactory(JacksonConverterFactory.create())
             .build();
     LoginApi loginApi = retrofit.create(LoginApi.class);
 
     private static MutableLiveData<String> LoginLiveData = new MutableLiveData<String>();
 
-    @Getter
-    private static String userToken = null;
+    //@Getter
+    //private static String userToken = null;
 
     public LoginFormDto test() {
         LoginFormDto loginFormDto = new LoginFormDto();
@@ -47,7 +47,7 @@ public class AuthService {
         return  loginFormDto;
     }
 
-    public String login(String username, String password) {
+    public void login(String username, String password) {
         LoginFormDto dto = new LoginFormDto();
         dto.setPassword(password);
         dto.setUsername(username);
@@ -57,8 +57,8 @@ public class AuthService {
             public void onResponse(Call<TokenDto> call, Response<TokenDto> response) {
                 TokenDto tokenDto = response.body();
                 System.out.println(tokenDto.getToken());
-                userToken = tokenDto.getToken();
-                LoginLiveData.postValue(userToken);
+                //userToken = tokenDto.getToken();
+                LoginLiveData.postValue(tokenDto.getToken());
             }
 
             @Override
@@ -67,7 +67,6 @@ public class AuthService {
                 t.printStackTrace();
             }
         });
-        return userToken;
     }
 
     public static MutableLiveData<String> getLiveData(){
