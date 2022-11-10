@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,23 +9,28 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager2"
         android:layout_width="match_parent"
-        android:layout_height="699dp"
+        android:layout_height="fill_parent"
         android:alpha="1"
         android:background="@android:color/system_accent2_50"
         android:orientation="horizontal"
         app:backgroundTint="@color/material_dynamic_primary70"
+        app:layout_constraintBottom_toTopOf="@+id/tabLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         tools:context=".MenuActivity"
-        tools:targetApi="s"></androidx.viewpager2.widget.ViewPager2>
+        tools:targetApi="s" />
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="412dp"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:tabMode="auto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:tabIndicatorAnimationMode="elastic"
-        tools:layout_editor_absoluteX="1dp"
-        >
+        app:tabMode="auto">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
@@ -68,4 +73,4 @@
             tools:layout_editor_absoluteY="224dp" />
     </com.google.android.material.tabs.TabLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
