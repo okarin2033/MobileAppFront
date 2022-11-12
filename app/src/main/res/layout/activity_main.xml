@@ -61,7 +61,7 @@
         android:minHeight="48dp"
         android:rotationX="0"
         android:rotationY="0"
-        android:text="@string/remember_me"
+        android:text="Запомни мени"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
@@ -69,22 +69,28 @@
         app:layout_constraintTop_toBottomOf="@+id/password_text"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="411dp"
-        android:layout_height="111dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
         app:layout_constraintBottom_toTopOf="@+id/login_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView"
         app:srcCompat="@drawable/book_100" />
+
+    <TextView
+        android:id="@+id/login_error_text"
+        android:layout_width="188dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="52dp"
+        android:text="Неверный логин или пароль"
+        android:textColor="#FF0000"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_button"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

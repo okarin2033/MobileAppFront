@@ -24,7 +24,7 @@ public class AuthService {
             .build();
     LoginApi loginApi = retrofit.create(LoginApi.class);
 
-    private static MutableLiveData<String> LoginLiveData = new MutableLiveData<String>();
+    private static final MutableLiveData<String> LoginLiveData = new MutableLiveData<String>();
 
     //@Getter
     //private static String userToken = null;
@@ -55,16 +55,18 @@ public class AuthService {
         call.enqueue(new Callback<TokenDto>() {
             @Override
             public void onResponse(Call<TokenDto> call, Response<TokenDto> response) {
-                TokenDto tokenDto = response.body();
-                System.out.println(tokenDto.getToken());
-                //userToken = tokenDto.getToken();
-                LoginLiveData.postValue(tokenDto.getToken());
+                if (response.body()!=null) {
+                    TokenDto tokenDto = response.body();
+                    System.out.println(tokenDto.getToken());
+                    //userToken = tokenDto.getToken();
+                    LoginLiveData.postValue(tokenDto.getToken());
+                } else LoginLiveData.postValue("errorLogin");
             }
 
             @Override
             public void onFailure(Call<TokenDto> call, Throwable t) {
                 System.out.println("Wrong email or password");
-                t.printStackTrace();
+                LoginLiveData.postValue("errorLogin");
             }
         });
     }

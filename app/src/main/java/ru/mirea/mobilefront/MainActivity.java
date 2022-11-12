@@ -9,6 +9,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -19,29 +20,31 @@ import android.widget.TextView;
 import lombok.SneakyThrows;
 
 import ru.mirea.mobilefront.dto.LoginFormDto;
+import ru.mirea.mobilefront.dto.RoleEnum;
+import ru.mirea.mobilefront.dto.UserDto;
 import ru.mirea.mobilefront.service.AuthService;
+import ru.mirea.mobilefront.service.UserService;
+import ru.mirea.mobilefront.service.UserSession;
 
 public class MainActivity extends AppCompatActivity {
-//private lateinit var binding: ActivityMainBinding;
-// - эта хуетень не работает, она на Котлине, ебенься с ней сам
-    Button testforanim;//переменная для id кнопки (для анимации)
+    Button testforanim; //переменная для id кнопки (для анимации)
     Button loginButton;
     EditText loginField;
     EditText passwordField;
 
+    UserService userService = new UserService();
+    AuthService authService = new AuthService();
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Intent intent = new Intent(this, MenuActivity.class);
-       startActivity(intent);
+        //Intent intent = new Intent(this, MenuActivity.class);
+        //startActivity(intent);
 
 
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        AuthService authService = new AuthService();
-        TextView textView = (TextView) findViewById(R.id.textView);
 
         testforanim=(Button)findViewById(R.id.switch_remember);//получаем id кнопочки
         testforanim.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
                 //changeViewColor(view);//вызов метода снизу
             }
         });
+
+
+        //уведомление ошибки логина
+        TextView errorTextLogin = (TextView) findViewById(R.id.login_error_text);
 
         //Логин юзера
         loginField=(EditText)findViewById(R.id.login_text);
@@ -68,12 +75,29 @@ public class MainActivity extends AppCompatActivity {
                 //  через секунд 10 в случае безуспешности логина и все такое
             }
         });
+
+
+
         //Подписка на изменение токена
+        Intent intent = new Intent(this, MenuActivity.class); //переключение на другой активити
         MutableLiveData<String> liveData = AuthService.getLiveData();
         liveData.observe(this, new Observer<String>() {
             @Override
             public void onChanged(String userToken) {
-                textView.setText(userToken);
+                if (userToken.equals("errorLogin")){
+                    //Вывести ошибочку логина на экран
+                    errorTextLogin.setVisibility(View.VISIBLE);
+                    return;
+                }
+                try {
+                    errorTextLogin.setVisibility(View.INVISIBLE);
+                    userService.getUserData(userToken);
+                    Log.d("auth", "login success");
+                    startActivity(intent);
+                } catch (Exception e){
+                    e.printStackTrace();
+                    Log.d("error", "Server userCheck problem"); //вывод текста об ошибке логина
+                }
             }
         });
     }
