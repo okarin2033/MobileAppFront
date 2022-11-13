@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MobileAppFront/app/src/main/res/drawable/secondary_btn.xml" value="0.2045" />
         <entry key="..\:/MobileAppFront/app/src/main/res/layout/activity_main.xml" value="0.6239737274220033" />
-        <entry key="..\:/MobileAppFront/app/src/main/res/layout/activity_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/MobileAppFront/app/src/main/res/layout/activity_menu.xml" value="0.2" />
         <entry key="..\:/MobileAppFront/app/src/main/res/layout/fragment_basket.xml" value="0.12360688956433637" />
         <entry key="..\:/MobileAppFront/app/src/main/res/layout/fragment_book.xml" value="0.264" />
+        <entry key="..\:/MobileAppFront/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
+        <entry key="..\:/MobileAppFront/app/src/main/res/layout/fragment_search.xml" value="0.18840579710144928" />
       </map>
     </option>
   </component>

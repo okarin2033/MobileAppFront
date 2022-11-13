@@ -84,6 +84,9 @@ public class MainActivity extends AppCompatActivity {
         liveData.observe(this, new Observer<String>() {
             @Override
             public void onChanged(String userToken) {
+                if (userToken.equals("Logout")){
+                    return;
+                }
                 if (userToken.equals("errorLogin")){
                     //Вывести ошибочку логина на экран
                     errorTextLogin.setVisibility(View.VISIBLE);
@@ -100,35 +103,5 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    private void changeViewColor(View view) {
-        // Load initial and final colors.
-        final int initialColor = getResources().getColor(R.color.purple_200);
-        final int finalColor = getResources().getColor(R.color.white);
-
-        ValueAnimator anim = ValueAnimator.ofFloat(0, 1);
-        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                // Use animation position to blend colors.
-                float position = animation.getAnimatedFraction();
-                int blended = blendColors(initialColor, finalColor, position);
-
-                // Apply blended color to the view.
-                view.setBackgroundColor(blended);
-            }
-        });
-
-        anim.setDuration(500).start();
-    }
-    private int blendColors(int from, int to, float ratio) {
-        final float inverseRatio = 1f - ratio;
-
-        final float r = Color.red(to) * ratio + Color.red(from) * inverseRatio;
-        final float g = Color.green(to) * ratio + Color.green(from) * inverseRatio;
-        final float b = Color.blue(to) * ratio + Color.blue(from) * inverseRatio;
-
-        return Color.rgb((int) r, (int) g, (int) b);
     }
 }

@@ -24,7 +24,7 @@ public class UserService {
             .addConverterFactory(JacksonConverterFactory.create())
             .build();
     UserApi userApi = retrofit.create(UserApi.class);
-    //UserSession userSession = UserSession.getUserSession();
+    MutableLiveData<UserSession> sessionData = UserSession.getUserSession();
 
 
     public void getUserData(String token) {
@@ -32,15 +32,17 @@ public class UserService {
         tokenDto.setToken(token);
         tokenDto.setRole(RoleEnum.USER_ROLE);
         Call<UserDto> call= userApi.getAuthUser(tokenDto);
-        UserSession userSession = new UserSession();
         call.enqueue(new Callback<UserDto>() {
             @Override
             public void onResponse(Call<UserDto> call, Response<UserDto> response) {
+                UserSession userSession = new UserSession();
                 userSession.setRole(response.body().getRole());
                 userSession.setToken(token);
                 userSession.setUsername(response.body().getUsername());
                 userSession.setEmail(response.body().getEmail());
+                sessionData.postValue(userSession);
                 Log.d("auth", userSession.toString());
+
             }
 
             @Override
@@ -48,6 +50,5 @@ public class UserService {
                 Log.d("error", "Error on getting User Data with token");
             }
         });
-        Log.d("auth", userSession.toString());
     }
 }
