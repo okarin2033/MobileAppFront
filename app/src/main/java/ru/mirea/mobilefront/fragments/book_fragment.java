@@ -30,15 +30,12 @@ public class book_fragment extends Fragment {
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        bookText = (TextView) view.findViewById(R.id.book_test_text);
         //bookText.setText("Test text");
         MutableLiveData<List<BookSimple>> bookRepo = BookService.getBestBooksList();
         bookRepo.observe(getViewLifecycleOwner(), new Observer<List<BookSimple>>() {
             @Override
             public void onChanged(List<BookSimple> bookSimples) {
-                //bookText.setText(bookSimples.toString());
-                bookText.setText("");
-                for (BookSimple book: bookSimples) bookText.append(book.toString());
+                for (BookSimple book: bookSimples) System.out.println(book.toString());
             }
         });
         bookService.updateBestBooks();
