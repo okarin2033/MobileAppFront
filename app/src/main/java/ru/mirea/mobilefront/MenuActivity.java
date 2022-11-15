@@ -26,6 +26,8 @@ public class MenuActivity extends FragmentActivity {
         tabLayout=findViewById(R.id.tabLayout);
         viewPager2=findViewById(R.id.viewPager2);
 
+        viewPager2.setUserInputEnabled(false); //отключение возможности скролить пальцем, оставляя только меню
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         adapter=new MyFragmentAdapter(fragmentManager,getLifecycle());
         viewPager2.setAdapter(adapter);
@@ -33,7 +35,7 @@ public class MenuActivity extends FragmentActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                viewPager2.setCurrentItem(tab.getPosition());
+                viewPager2.setCurrentItem(tab.getPosition(), false); //false - отключает прокрутку (анимация)
             }
 
             @Override

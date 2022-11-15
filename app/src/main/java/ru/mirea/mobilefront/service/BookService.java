@@ -2,7 +2,6 @@ package ru.mirea.mobilefront.service;
 
 import android.util.Log;
 
-import androidx.arch.core.internal.SafeIterableMap;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
@@ -14,7 +13,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
-import ru.mirea.mobilefront.dto.Book;
 import ru.mirea.mobilefront.dto.BookSimple;
 import ru.mirea.mobilefront.service.retrofit.BookApi;
 
@@ -47,7 +45,7 @@ public class BookService {
         });
     }
 
-    public void updateTopList(){
+    public void updateNewBooks(){
         List<BookSimple> bookList = new ArrayList<>();
         Call<List<BookSimple>> call = bookApi.getNewBooks();
         call.enqueue(new Callback<List<BookSimple>>() {

@@ -3,7 +3,7 @@ package ru.mirea.mobilefront.dto;
 import lombok.Data;
 
 @Data
-public class Book {
+public class BookFull {
     String bookName;
     String url;
     String imageUrl;

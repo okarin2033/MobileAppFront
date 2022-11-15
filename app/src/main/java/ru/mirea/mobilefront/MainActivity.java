@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                         ,passwordField.getText().toString());
               //  Здесь врубается кнопка логина, загрузочка все такое ее надо будет вырубить
                 //  через секунд 10 в случае безуспешности логина и все такое
+                //Старт анимации!!!
             }
         });
 
@@ -90,12 +91,14 @@ public class MainActivity extends AppCompatActivity {
                 if (userToken.equals("errorLogin")){
                     //Вывести ошибочку логина на экран
                     errorTextLogin.setVisibility(View.VISIBLE);
+                    //Конец анимации
                     return;
                 }
                 try {
                     errorTextLogin.setVisibility(View.INVISIBLE);
                     userService.getUserData(userToken);
                     Log.d("auth", "login success");
+                    //Конец анимации
                     startActivity(intent);
                 } catch (Exception e){
                     e.printStackTrace();

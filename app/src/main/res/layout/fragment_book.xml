@@ -6,4 +6,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/teal_700"
-    tools:context=".fragments.search_fragment"/>
+    tools:context=".fragments.search_fragment">
+
+    <LinearLayout
+        android:divider="@drawable/divider_res"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/book_card_style"
+        android:orientation="vertical"
+        android:showDividers="middle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/best_books_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="24dp"
+            android:text="\nНовые книги"
+            android:textSize="18sp"
+            android:textColor="#B6B6B6"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/new_books_view"
+            android:paddingLeft="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:orientation="horizontal" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
