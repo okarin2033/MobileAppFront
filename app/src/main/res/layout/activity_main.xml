@@ -3,10 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/menu_color"
     android:layout_height="match_parent"
     android:theme="@android:style/Theme.Black.NoTitleBar"
     tools:context=".MainActivity">
 
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/back_gif_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:adjustViewBounds="true"
+        android:background="@drawable/clouds"
+
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/login_button"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/login_text"
@@ -16,6 +34,10 @@
         android:ems="10"
         android:fontFamily="@font/allerta"
         android:hint="@string/login_button_text"
+        android:background="@drawable/login_style"
+        android:padding="12dp"
+        android:textSize="18dp"
+        android:textColor="@color/light_blue"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,25 +50,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:background="@drawable/login_style"
         android:ems="10"
         android:fontFamily="@font/allerta"
         android:hint="@string/password_button_text"
         android:inputType="textPassword"
         android:minHeight="48dp"
+        android:padding="12dp"
         android:textAlignment="textStart"
         android:textAllCaps="false"
+        android:textColor="@color/light_blue"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_text" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/login_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
         android:layout_marginTop="64dp"
+        android:background="@drawable/login_style"
         android:fontFamily="@font/allerta"
         android:text="@string/log_button"
+        android:textColor="@color/light_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,8 +89,8 @@
         android:minHeight="48dp"
         android:rotationX="0"
         android:rotationY="0"
-        android:text="Запомни мени"
-        android:textColor="#000000"
+        android:text="Запомни меня"
+        android:textColor="@color/dark_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,16 +109,39 @@
 
     <TextView
         android:id="@+id/login_error_text"
-        android:layout_width="188dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="52dp"
+        android:layout_width="232dp"
+        android:layout_height="24dp"
         android:text="Неверный логин или пароль"
-        android:textColor="#FF0000"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="@color/teal_200"
         android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/login_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch_remember"
+        app:layout_constraintVertical_bias="0.525"
+        tools:visibility="visible" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/image"
+        android:layout_width="250dp"
+        android:layout_height="125dp"
+        android:layout_gravity="center_horizontal"
+        android:adjustViewBounds="true"
+        android:background="@drawable/load"
+
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_button"
-        tools:visibility="visible" />
+
+        />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
