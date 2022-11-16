@@ -1,5 +1,6 @@
 package ru.mirea.mobilefront.fragments;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,9 +8,11 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,15 +40,21 @@ public class book_fragment extends Fragment {
         newBooksView = view.findViewById(R.id.new_books_view);
         newBooksList = BookService.getBestBooksList();
 
+        RecyclerView.LayoutManager layoutManager = new
+                LinearLayoutManager(view.getContext()
+                ,RecyclerView.HORIZONTAL
+                ,false);
+        newBooksView.setLayoutManager(layoutManager);
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this.getContext(), RecyclerView.HORIZONTAL);
+        Drawable d = ResourcesCompat.getDrawable(this.getResources(), R.drawable.divider_horizontal_res, null);
+        dividerItemDecoration.setDrawable(d);
+        newBooksView.addItemDecoration(dividerItemDecoration);
+
         newBooksList.observe(getViewLifecycleOwner(), new Observer<List<BookSimple>>() {
             @Override
             public void onChanged(List<BookSimple> newBooks) {
                 //for (BookSimple book: bookSimples) System.out.println(book.toString());
-                RecyclerView.LayoutManager layoutManager = new
-                        LinearLayoutManager(view.getContext()
-                        ,RecyclerView.HORIZONTAL
-                        ,false);
-                newBooksView.setLayoutManager(layoutManager);
                 bookViewAdapter = new BookViewAdapter(view.getContext(), newBooks);
                 newBooksView.setAdapter(bookViewAdapter);
             }

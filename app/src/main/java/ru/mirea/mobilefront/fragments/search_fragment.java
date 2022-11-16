@@ -1,5 +1,6 @@
 package ru.mirea.mobilefront.fragments;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +10,11 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,15 +44,21 @@ public class search_fragment extends Fragment {
         searchBooksView = view.findViewById(R.id.book_search_view);
         searchBookList = BookService.getSearchBookList();
 
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this.getContext(), RecyclerView.VERTICAL);
+        Drawable d = ResourcesCompat.getDrawable(this.getResources(), R.drawable.divider_vertical_res, null);
+        dividerItemDecoration.setDrawable(d);
+        searchBooksView.addItemDecoration(dividerItemDecoration);
+
+        RecyclerView.LayoutManager layoutManager = new
+                LinearLayoutManager(view.getContext()
+                ,RecyclerView.VERTICAL
+                ,false);
+        searchBooksView.setLayoutManager(layoutManager);
+
         searchBookList.observe(getViewLifecycleOwner(), new Observer<List<BookSimple>>() {
             @Override
             public void onChanged(List<BookSimple> booksFound) {
                 //for (BookSimple book: bookSimples) System.out.println(book.toString());
-                RecyclerView.LayoutManager layoutManager = new
-                        LinearLayoutManager(view.getContext()
-                        ,RecyclerView.VERTICAL
-                        ,false);
-                searchBooksView.setLayoutManager(layoutManager);
                 BookSearchViewAdapter adapter = new BookSearchViewAdapter(view.getContext(), booksFound);
                 searchBooksView.setAdapter(adapter);
             }

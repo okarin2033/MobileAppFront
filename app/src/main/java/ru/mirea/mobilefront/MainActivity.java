@@ -1,6 +1,7 @@
 package ru.mirea.mobilefront;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
@@ -27,8 +28,8 @@ import ru.mirea.mobilefront.service.UserService;
 import ru.mirea.mobilefront.service.UserSession;
 
 public class MainActivity extends AppCompatActivity {
-    Button testforanim; //переменная для id кнопки (для анимации)
-    Button loginButton;
+    //Button loginButton;
+    AppCompatButton loginButton;
     EditText loginField;
     EditText passwordField;
 
@@ -46,18 +47,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        testforanim=(Button)findViewById(R.id.switch_remember);//получаем id кнопочки
-        testforanim.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Animation Bounce = AnimationUtils.loadAnimation(MainActivity.this,R.anim.fadein); //лучаем анимацию
-                testforanim.startAnimation(Bounce);//Запуск анимации кнопки
-                LoginFormDto dto = null;
-                dto = authService.test();
-                //changeViewColor(view);//вызов метода снизу
-            }
-        });
-
 
         //уведомление ошибки логина
         TextView errorTextLogin = (TextView) findViewById(R.id.login_error_text);
@@ -65,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         //Логин юзера
         loginField=(EditText)findViewById(R.id.login_text);
         passwordField=(EditText)findViewById(R.id.password_text);
-        loginButton = (Button)findViewById(R.id.login_button);
+        loginButton = (AppCompatButton)findViewById(R.id.login_button);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

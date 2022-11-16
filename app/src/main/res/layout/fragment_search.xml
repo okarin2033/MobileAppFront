@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_700"
+    android:background="@drawable/log_back_gradient"
 
     tools:context=".fragments.search_fragment">
 
@@ -12,8 +12,8 @@
         android:id="@+id/book_search_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="36dp"
         android:text="Искать"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +25,11 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="64dp"
         android:ems="10"
+        android:background="@drawable/login_style"
+        android:padding="12dp"
+        android:textColor="@color/light_blue"
         android:hint="Поиск по каталогу"
+        android:textColorHint="@color/light_blue"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="@+id/book_search_button"
         app:layout_constraintEnd_toStartOf="@+id/book_search_button"
@@ -36,11 +40,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/book_search_view"
-        android:layout_width="413dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
         android:layout_marginVertical="12dp"
         android:layout_marginTop="44dp"
-        android:background="@drawable/book_card_style"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
