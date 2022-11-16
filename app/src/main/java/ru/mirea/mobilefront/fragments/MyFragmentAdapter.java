@@ -21,7 +21,7 @@ public class MyFragmentAdapter extends FragmentStateAdapter {
                 case 1:
                     return new search_fragment();
                 case 2:
-                    return new basket_fragment();
+                    return new BasketFragment();
                 case 3:
                     return new menu_fragment();
                 case 4:

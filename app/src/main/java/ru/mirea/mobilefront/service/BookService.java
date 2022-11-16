@@ -46,7 +46,6 @@ public class BookService {
     }
 
     public void updateNewBooks(){
-        List<BookSimple> bookList = new ArrayList<>();
         Call<List<BookSimple>> call = bookApi.getNewBooks();
         call.enqueue(new Callback<List<BookSimple>>() {
             @Override
@@ -58,6 +57,26 @@ public class BookService {
             @Override
             public void onFailure(Call<List<BookSimple>> call, Throwable t) {
                 Log.println(Log.ASSERT, "error", "error with receiving data from server in updateTopBooks");
+                t.printStackTrace();
+            }
+        });
+    }
+
+    @Getter
+    private static final MutableLiveData<List<BookSimple>> searchBookList = new MutableLiveData<List<BookSimple>>();
+
+    public void searchForBook(String request){
+        Call<List<BookSimple>> call = bookApi.searchForBook(request);
+        call.enqueue(new Callback<List<BookSimple>>() {
+            @Override
+            public void onResponse(Call<List<BookSimple>> call, Response<List<BookSimple>> response) {
+                searchBookList.postValue(response.body());
+                System.out.println(searchBookList);
+            }
+
+            @Override
+            public void onFailure(Call<List<BookSimple>> call, Throwable t) {
+                Log.d("error", "error on receiving data from server in searchForBook");
                 t.printStackTrace();
             }
         });

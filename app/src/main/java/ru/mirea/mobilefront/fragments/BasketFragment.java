@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import ru.mirea.mobilefront.R;
 import ru.mirea.mobilefront.service.BookService;
 
-public class basket_fragment extends Fragment {
+public class BasketFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
