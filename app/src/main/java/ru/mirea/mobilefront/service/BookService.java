@@ -25,7 +25,7 @@ public class BookService {
     @Getter
     private static final MutableLiveData<List<BookSimple>> bestBooksList = new MutableLiveData<>();
     @Getter
-    private static final MutableLiveData<List<BookSimple>> topBooksList = new MutableLiveData<>();
+    private static final MutableLiveData<List<BookSimple>> newBooksList = new MutableLiveData<>();
 
     public void updateBestBooks(){
         List<BookSimple> bookList = new ArrayList<>();
@@ -50,7 +50,7 @@ public class BookService {
         call.enqueue(new Callback<List<BookSimple>>() {
             @Override
             public void onResponse(Call<List<BookSimple>> call, Response<List<BookSimple>> response) {
-                bestBooksList.postValue(response.body());
+                newBooksList.postValue(response.body());
                 System.out.println(bestBooksList);
             }
 
