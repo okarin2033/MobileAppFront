@@ -107,14 +107,14 @@
         tools:visibility="visible" />
 
     <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/image"
+        android:id="@+id/gif_load_image"
         android:layout_width="161dp"
         android:layout_height="82dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="60dp"
         android:adjustViewBounds="true"
 
-        android:background="@drawable/load"
+        android:background="@drawable/load_blue"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
 
