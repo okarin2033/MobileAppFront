@@ -38,7 +38,7 @@ public class book_fragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         //Новые книги, заполнение витрины
         newBooksView = view.findViewById(R.id.new_books_view);
-        newBooksList = BookService.getBestBooksList();
+        newBooksList = BookService.getNewBooksList();
 
         RecyclerView.LayoutManager layoutManager = new
                 LinearLayoutManager(view.getContext()
