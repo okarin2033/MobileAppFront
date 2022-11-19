@@ -12,8 +12,6 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
-import com.bumptech.glide.Glide;
-
 import pl.droidsonroids.gif.GifImageView;
 import ru.mirea.mobilefront.service.AuthService;
 import ru.mirea.mobilefront.service.UserService;
@@ -23,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     AppCompatButton loginButton;
     EditText loginField;
     EditText passwordField;
-    GifImageView gifImageView; //тестовое поле
+    GifImageView gifImageView; // для гифки книжек
 
     UserService userService = new UserService();
     AuthService authService = new AuthService();
@@ -33,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         //Intent intent = new Intent(this, MenuActivity.class);
         //startActivity(intent);
-        
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -45,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         loginField=(EditText)findViewById(R.id.login_text);
         passwordField=(EditText)findViewById(R.id.password_text);
         loginButton = (AppCompatButton)findViewById(R.id.login_button);
+        gifImageView=findViewById(R.id.gif_load_image);
+        gifImageView.setVisibility(View.INVISIBLE);//тут гифка становиться не видмой
 
         loginButton.setOnClickListener(new View.OnClickListener()
         {
@@ -53,9 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 authService.login(loginField.getText().toString()
                         ,passwordField.getText().toString());
 
-                Glide with(this)
-                        .load()
-
+                gifImageView.setVisibility(View.VISIBLE);//тут видмой
                 //  Здесь врубается кнопка логина, загрузочка все такое ее надо будет вырубить
                 //  через секунд 10 в случае безуспешности логина и все такое
                 //Старт анимации!!!
@@ -76,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 if (userToken.equals("errorLogin")){
                     //Вывести ошибочку логина на экран
                     errorTextLogin.setVisibility(View.VISIBLE);
+                    gifImageView.setVisibility(View.INVISIBLE);
                     //Конец анимации
                     return;
                 }
@@ -83,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
                     errorTextLogin.setVisibility(View.INVISIBLE);
                     userService.getUserData(userToken);
                     Log.d("auth", "login success");
+                    gifImageView.setVisibility(View.INVISIBLE);//тут не видмой
                     //Конец анимации
                     startActivity(intent);
                 } catch (Exception e){
