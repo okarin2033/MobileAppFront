@@ -8,13 +8,14 @@
 
     tools:context=".fragments.search_fragment">
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/book_search_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:icon="@drawable/search_24"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="36dp"
-        android:text="Искать"
+        android:background="@drawable/login_style"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +27,7 @@
         android:layout_marginEnd="64dp"
         android:ems="10"
         android:background="@drawable/login_style"
-        android:padding="12dp"
+        android:padding="14dp"
         android:textColor="@color/light_blue"
         android:hint="Поиск по каталогу"
         android:textColorHint="@color/light_blue"
