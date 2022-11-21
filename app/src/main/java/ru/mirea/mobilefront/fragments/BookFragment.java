@@ -23,11 +23,13 @@ import ru.mirea.mobilefront.design.BookViewAdapter;
 import ru.mirea.mobilefront.dto.BookSimple;
 import ru.mirea.mobilefront.service.BookService;
 
-public class book_fragment extends Fragment {
+public class BookFragment extends Fragment {
     BookViewAdapter bookViewAdapter;
     RecyclerView newBooksView;
+    RecyclerView topBooksView;
     BookService bookService = new BookService();
     MutableLiveData<List<BookSimple>> newBooksList;
+    MutableLiveData<List<BookSimple>> topBooksList;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,18 +40,26 @@ public class book_fragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         //Новые книги, заполнение витрины
         newBooksView = view.findViewById(R.id.new_books_view);
+        topBooksView = view.findViewById(R.id.top_books_view);
         newBooksList = BookService.getNewBooksList();
+        topBooksList = BookService.getBestBooksList();
 
         RecyclerView.LayoutManager layoutManager = new
                 LinearLayoutManager(view.getContext()
                 ,RecyclerView.HORIZONTAL
                 ,false);
         newBooksView.setLayoutManager(layoutManager);
+        RecyclerView.LayoutManager layoutManager2 = new
+                LinearLayoutManager(view.getContext()
+                ,RecyclerView.HORIZONTAL
+                ,false);
+        topBooksView.setLayoutManager(layoutManager2);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this.getContext(), RecyclerView.HORIZONTAL);
         Drawable d = ResourcesCompat.getDrawable(this.getResources(), R.drawable.divider_horizontal_res, null);
         dividerItemDecoration.setDrawable(d);
         newBooksView.addItemDecoration(dividerItemDecoration);
+        topBooksView.addItemDecoration(dividerItemDecoration);
 
         newBooksList.observe(getViewLifecycleOwner(), new Observer<List<BookSimple>>() {
             @Override
@@ -59,6 +69,15 @@ public class book_fragment extends Fragment {
                 newBooksView.setAdapter(bookViewAdapter);
             }
         });
+
+        topBooksList.observe(getViewLifecycleOwner(), new Observer<List<BookSimple>>() {
+            @Override
+            public void onChanged(List<BookSimple> bookSimples) {
+                bookViewAdapter = new BookViewAdapter(view.getContext(), bookSimples);
+                topBooksView.setAdapter(bookViewAdapter);
+            }
+        });
+
         bookService.updateBestBooks();
         bookService.updateNewBooks();
     }

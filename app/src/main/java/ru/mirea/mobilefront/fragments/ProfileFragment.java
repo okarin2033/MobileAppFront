@@ -22,7 +22,7 @@ import ru.mirea.mobilefront.R;
 import ru.mirea.mobilefront.service.AuthService;
 import ru.mirea.mobilefront.service.UserSession;
 
-public class profile_fragment extends Fragment {
+public class ProfileFragment extends Fragment {
 
     MutableLiveData<String> tokenData = AuthService.getLiveData();
     MutableLiveData<UserSession> userSession = UserSession.getUserSession();
@@ -32,7 +32,8 @@ public class profile_fragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         return (ViewGroup)inflater.inflate(R.layout.fragment_profile,container,false);
     }
 
