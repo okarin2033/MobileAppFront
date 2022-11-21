@@ -13,6 +13,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
+import ru.mirea.mobilefront.dto.BookFull;
 import ru.mirea.mobilefront.dto.BookSimple;
 import ru.mirea.mobilefront.service.retrofit.BookApi;
 
@@ -82,4 +83,21 @@ public class BookService {
         });
     }
 
+    @Getter
+    private static final MutableLiveData<BookFull> fullBookData =  new MutableLiveData<BookFull>();
+    public void getFullBookData(String url) {
+        Call<BookFull> call = bookApi.getBook(url);
+        call.enqueue(new Callback<BookFull>() {
+            @Override
+            public void onResponse(Call<BookFull> call, Response<BookFull> response) {
+                BookFull book = response.body();
+                fullBookData.postValue(book);
+            }
+
+            @Override
+            public void onFailure(Call<BookFull> call, Throwable t) {
+                Log.d("error", "error on receiving data from server in getFullBookData");
+            }
+        });
+    }
 }
