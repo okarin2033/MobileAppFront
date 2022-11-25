@@ -17,15 +17,15 @@ public class MyFragmentAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position){
                 case 0:
-                    return new book_fragment();
+                    return new BookFragment();
                 case 1:
-                    return new search_fragment();
+                    return new SearchFragment();
                 case 2:
                     return new BasketFragment();
                 case 3:
-                    return new menu_fragment();
+                    return new MenuFragment();
                 case 4:
-                    return new profile_fragment();
+                    return new ProfileFragment();
                 default:
                     return null;
 

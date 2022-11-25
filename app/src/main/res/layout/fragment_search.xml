@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/log_back_gradient"
 
-    tools:context=".fragments.search_fragment">
+    tools:context=".fragments.SearchFragment">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/book_search_button"

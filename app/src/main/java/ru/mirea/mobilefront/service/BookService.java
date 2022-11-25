@@ -72,7 +72,6 @@ public class BookService {
             @Override
             public void onResponse(Call<List<BookSimple>> call, Response<List<BookSimple>> response) {
                 searchBookList.postValue(response.body());
-                System.out.println(searchBookList);
             }
 
             @Override

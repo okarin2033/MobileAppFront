@@ -49,6 +49,8 @@ public class BookSearchViewAdapter extends RecyclerView.Adapter<BookSearchViewAd
 
     @Override
     public int getItemCount() {
+        if (bookList == null)
+            return 0;
         return bookList.size();
     }
 

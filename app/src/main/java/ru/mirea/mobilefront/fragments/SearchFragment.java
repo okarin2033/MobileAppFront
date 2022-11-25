@@ -18,6 +18,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 import ru.mirea.mobilefront.R;
@@ -26,7 +28,7 @@ import ru.mirea.mobilefront.design.BookViewAdapter;
 import ru.mirea.mobilefront.dto.BookSimple;
 import ru.mirea.mobilefront.service.BookService;
 
-public class search_fragment extends Fragment {
+public class SearchFragment extends Fragment {
     RecyclerView searchBooksView;
     MutableLiveData<List<BookSimple>> searchBookList;
     BookService bookService = new BookService();
@@ -70,7 +72,7 @@ public class search_fragment extends Fragment {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                bookService.searchForBook(bookSearch.getText().toString());
+                    bookService.searchForBook(bookSearch.getText().toString());
             }
         });
 

@@ -4,7 +4,7 @@
     android:background="@drawable/log_back_gradient"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.search_fragment">
+    tools:context=".fragments.SearchFragment">
 
     <TextView
         android:layout_width="match_parent"
