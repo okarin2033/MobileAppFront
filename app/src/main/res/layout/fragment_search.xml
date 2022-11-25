@@ -8,13 +8,18 @@
 
     tools:context=".fragments.SearchFragment">
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/book_search_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:icon="@drawable/search_24"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="36dp"
+
         android:text="Искать"
+        android:textColor="@color/dark_blue"
+        android:padding="2dp"
+        android:background="@drawable/green_square"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,19 +29,19 @@
         android:layout_height="48dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="64dp"
+        android:background="@drawable/green_square"
         android:ems="10"
-        android:background="@drawable/login_style"
-        android:padding="12dp"
-        android:textColor="@color/light_blue"
         android:hint="Поиск по каталогу"
-        android:textColorHint="@color/light_blue"
         android:inputType="textPersonName"
+        android:padding="12dp"
+        android:textColor="@color/grey_blue"
+        android:textColorHint="@color/grey_blue"
         app:layout_constraintBottom_toBottomOf="@+id/book_search_button"
         app:layout_constraintEnd_toStartOf="@+id/book_search_button"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/book_search_button"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/book_search_view"
