@@ -10,12 +10,13 @@
     tools:context=".fragments.BookFragment">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="377dp"
         android:layout_height="369dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="100dp"
-        android:layout_marginEnd="16dp"
 
+        android:layout_marginEnd="16dp"
         android:divider="@drawable/divider_vertical_res"
         android:orientation="vertical"
         android:showDividers="middle"
@@ -27,12 +28,12 @@
             android:id="@+id/best_books_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/yellow_square"
             android:paddingStart="15dp"
             android:paddingTop="10dp"
             android:paddingBottom="15dp"
-            android:text="Новые книги"
 
-            android:background="@drawable/yellow_square"
+            android:text="Новые книги"
             android:textColor="@color/dark_blue"
             android:textSize="20sp"
 
@@ -48,8 +49,7 @@
             android:paddingStart="14dp"
             android:paddingTop="15dp"
             android:paddingEnd="14dp"
-            android:paddingBottom="14dp"
- />
+            android:paddingBottom="14dp" />
 
     </LinearLayout>
 
@@ -59,13 +59,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:paddingStart="16dp"
+        android:paddingStart="5dp"
         android:paddingEnd="16dp"
         android:text="Главная"
         android:textColor="@color/grey_yellow"
         android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="RtlSymmetry" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
