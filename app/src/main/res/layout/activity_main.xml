@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:background="@raw/blue_square"
+        android:background="@drawable/blue_square"
         android:ems="10"
         android:fontFamily="@font/allerta"
         android:hint="@string/login_button_text"
@@ -49,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:background="@raw/blue_square"
+        android:background="@drawable/blue_square"
         android:ems="10"
         android:fontFamily="@font/allerta"
         android:hint="@string/password_button_text"
@@ -70,9 +70,8 @@
         android:id="@+id/login_button"
         android:layout_width="100dp"
         android:layout_height="48dp"
-        android:layout_marginTop="96dp"
-        android:animation="@anim/blink_anim"
-        android:background="@raw/ripple_btn"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ripple_btn"
         android:fontFamily="@font/allerta"
         android:text="@string/log_button"
 
@@ -118,12 +117,14 @@
         android:layout_height="82dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="60dp"
-        android:adjustViewBounds="true"
+        android:layout_marginBottom="8dp"
 
+        android:adjustViewBounds="true"
         android:background="@drawable/load_blue"
         android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
 
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_button" />
 

@@ -4,7 +4,7 @@
     android:layout_width="150dp"
     android:layout_height="220dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@raw/book_card_style"
+    android:background="@drawable/book_card_style"
     app:layout_constraintCircleRadius="50dp"
 
     >
