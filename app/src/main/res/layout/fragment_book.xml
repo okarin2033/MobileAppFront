@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bookContainer"
@@ -15,7 +16,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/login_style"
+        android:background="@drawable/yellow_square"
         android:orientation="vertical"
         android:showDividers="middle"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,13 +30,14 @@
             android:paddingStart="24dp"
             android:text="\nНовые книги"
             android:textSize="20sp"
-            android:textColor="@color/light_blue"
+            android:textColor="@color/dark_blue"
             tools:ignore="RtlSymmetry" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
             android:id="@+id/new_books_view"
+            android:background="@color/green"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal" />
@@ -51,7 +53,7 @@
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:text="Главная"
-        android:textColor="@color/menu_color"
+        android:textColor="@color/grey_blue"
         android:textSize="36sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
