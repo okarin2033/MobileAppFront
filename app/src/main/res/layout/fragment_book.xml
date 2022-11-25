@@ -114,13 +114,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:paddingStart="16dp"
+        android:paddingStart="5dp"
         android:paddingEnd="16dp"
         android:text="Главная"
         android:textColor="@color/grey_yellow"
         android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="RtlSymmetry" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
