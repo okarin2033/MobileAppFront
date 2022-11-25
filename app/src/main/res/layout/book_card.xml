@@ -4,7 +4,7 @@
     android:layout_width="150dp"
     android:layout_height="220dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/book_card_style"
+    android:background="@raw/book_card_style"
     app:layout_constraintCircleRadius="50dp"
 
     >
@@ -13,7 +13,7 @@
         android:id="@+id/book_card_image"
         android:layout_width="140dp"
         android:layout_height="160dp"
-        android:rotationX="-7"
+
         android:paddingTop="3dp"
         app:layout_constraintBottom_toTopOf="@+id/book_card_name"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,7 +26,7 @@
         android:id="@+id/book_card_name"
         android:layout_width="150dp"
         android:layout_height="49dp"
-        android:shadowColor="@color/dark_blue"
+        android:textColor="@color/grey_yellow"
         android:text="Название книги"
         android:textAlignment="center"
 

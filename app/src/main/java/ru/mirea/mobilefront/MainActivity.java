@@ -3,7 +3,6 @@ package ru.mirea.mobilefront;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -22,6 +21,7 @@ import ru.mirea.mobilefront.service.UserService;
 public class MainActivity extends AppCompatActivity {
     //Button loginButton;
     AppCompatButton loginButton;
+    AppCompatButton loginButton1;
     EditText loginField;
     EditText passwordField;
     GifImageView gifImageView; // для гифки книжек
@@ -48,37 +48,39 @@ public class MainActivity extends AppCompatActivity {
         loginField = (EditText) findViewById(R.id.login_text);
         passwordField = (EditText) findViewById(R.id.password_text);
         loginButton = (AppCompatButton) findViewById(R.id.login_button);
+
         gifImageView = findViewById(R.id.gif_load_image);
         gifImageView.setVisibility(View.INVISIBLE);//тут гифка становиться не видмой
         blink_anim = AnimationUtils.loadAnimation(this, R.anim.blink_anim);
-        loginButton.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                if (motionEvent.getAction() == motionEvent.ACTION_DOWN) {
-                    loginButton.startAnimation(blink_anim);
-                }
-                if(motionEvent.getAction() == motionEvent.ACTION_UP){
-                    loginButton.
-                }
-                return true;
-            }
-        });
-
-        loginButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view) {
-                authService.login(loginField.getText().toString()
-                        ,passwordField.getText().toString());
-
-                gifImageView.setVisibility(View.VISIBLE);//тут видмой
-                //  Здесь врубается кнопка логина, загрузочка все такое ее надо будет вырубить
-                //  через секунд 10 в случае безуспешности логина и все такое
-                //Старт анимации!!!
-            }
-        });
 
 
+//        loginButton.setOnTouchListener(new View.OnTouchListener() {
+//            @SuppressLint("ClickableViewAccessibility")
+//            @Override
+//            public boolean onTouch(View view, MotionEvent motionEvent) {
+//                if (motionEvent.getAction() == motionEvent.ACTION_DOWN) {
+//                    loginButton.startAnimation(blink_anim);
+//                    loginButton.clearAnimation();
+//                }
+//
+//                return false;
+//            }
+//        });
+
+
+                loginButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        authService.login(loginField.getText().toString()
+                                , passwordField.getText().toString());
+
+
+                        gifImageView.setVisibility(View.VISIBLE);//тут видмой
+                        //  Здесь врубается кнопка логина, загрузочка все такое ее надо будет вырубить
+                        //  через секунд 10 в случае безуспешности логина и все такое
+                        //Старт анимации!!!
+                    }
+                });
 
         //Подписка на изменение токена
         Intent intent = new Intent(this, MenuActivity.class); //переключение на другой активити

@@ -6,36 +6,33 @@
     android:id="@+id/bookContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/log_back_gradient"
-    tools:context=".fragments.SearchFragment">
+    android:background="@raw/log_back_gradient"
+    tools:context=".fragments.BookFragment">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
+    <LinearLayout
+        android:layout_width="377dp"
+        android:layout_height="369dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/login_style"
-        android:orientation="vertical"
-        android:showDividers="middle"
-        android:layout_height="300dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/yellow_square"
+
         android:divider="@drawable/divider_vertical_res"
         android:orientation="vertical"
         android:showDividers="middle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/best_books_title"
             android:layout_width="match_parent"
-            android:paddingBottom="48dp"
             android:layout_height="wrap_content"
-            android:paddingStart="24dp"
-            android:text="\nНовые книги"
+            android:paddingStart="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="15dp"
+            android:text="Новые книги"
+
+            android:background="@raw/yellow_square"
             android:textColor="@color/dark_blue"
             android:textSize="20sp"
 
@@ -46,69 +43,15 @@
             android:layout_width="wrap_content"
             android:layout_height="252dp"
             android:layout_marginHorizontal="8dp"
-            android:background="@drawable/green_square"
+            android:background="@raw/blue_square"
             android:orientation="horizontal"
             android:paddingStart="14dp"
             android:paddingTop="15dp"
             android:paddingEnd="14dp"
             android:paddingBottom="14dp"
-            android:rotationX="8" />
+ />
 
-                <TextView
-                    android:id="@+id/new_books_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="24dp"
-                    android:paddingTop="12dp"
-                    android:text="Новые книги"
-                    android:textColor="@color/light_blue"
-                    android:textSize="24sp"
-                    tools:ignore="RtlSymmetry" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/new_books_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout2"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="4dp"
-                android:background="@drawable/login_style"
-                android:divider="@drawable/divider_vertical_res"
-                android:orientation="vertical"
-                android:showDividers="middle">
-
-                <TextView
-                    android:id="@+id/top_books_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="24dp"
-                    android:paddingTop="12dp"
-                    android:text="Бестселлеры"
-                    android:textColor="@color/light_blue"
-                    android:textSize="24sp"
-                    tools:ignore="RtlSymmetry" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/top_books_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp" />
-
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView"
@@ -119,7 +62,7 @@
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:text="Главная"
-        android:textColor="@color/grey_blue"
+        android:textColor="@color/grey_yellow"
         android:textSize="36sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
