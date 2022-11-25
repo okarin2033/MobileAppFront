@@ -35,7 +35,7 @@ public class MenuActivity extends FragmentActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                viewPager2.setCurrentItem(tab.getPosition(), false); //false - отключает прокрутку (анимация)
+                viewPager2.setCurrentItem(tab.getPosition(), true); //false - отключает прокрутку (анимация)
             }
 
             @Override

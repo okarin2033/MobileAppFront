@@ -3,7 +3,10 @@ package ru.mirea.mobilefront;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -23,8 +26,10 @@ public class MainActivity extends AppCompatActivity {
     EditText passwordField;
     GifImageView gifImageView; // для гифки книжек
 
+    Animation blink_anim;
     UserService userService = new UserService();
     AuthService authService = new AuthService();
+
 
 
     @Override
@@ -40,11 +45,24 @@ public class MainActivity extends AppCompatActivity {
         TextView errorTextLogin = (TextView) findViewById(R.id.login_error_text);
 
         //Логин юзера
-        loginField=(EditText)findViewById(R.id.login_text);
-        passwordField=(EditText)findViewById(R.id.password_text);
-        loginButton = (AppCompatButton)findViewById(R.id.login_button);
-        gifImageView=findViewById(R.id.gif_load_image);
+        loginField = (EditText) findViewById(R.id.login_text);
+        passwordField = (EditText) findViewById(R.id.password_text);
+        loginButton = (AppCompatButton) findViewById(R.id.login_button);
+        gifImageView = findViewById(R.id.gif_load_image);
         gifImageView.setVisibility(View.INVISIBLE);//тут гифка становиться не видмой
+        blink_anim = AnimationUtils.loadAnimation(this, R.anim.blink_anim);
+        loginButton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == motionEvent.ACTION_DOWN) {
+                    loginButton.startAnimation(blink_anim);
+                }
+                if(motionEvent.getAction() == motionEvent.ACTION_UP){
+                    loginButton.
+                }
+                return true;
+            }
+        });
 
         loginButton.setOnClickListener(new View.OnClickListener()
         {

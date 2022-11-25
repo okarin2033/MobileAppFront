@@ -10,13 +10,13 @@
     tools:context=".fragments.search_fragment">
 
     <LinearLayout
-        android:divider="@drawable/divider_vertical_res"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_width="377dp"
+        android:layout_height="369dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/yellow_square"
+        android:divider="@drawable/divider_vertical_res"
         android:orientation="vertical"
         android:showDividers="middle"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,18 +29,23 @@
             android:layout_height="wrap_content"
             android:paddingStart="24dp"
             android:text="\nНовые книги"
-            android:textSize="20sp"
             android:textColor="@color/dark_blue"
+            android:textSize="20sp"
+
             tools:ignore="RtlSymmetry" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
             android:id="@+id/new_books_view"
-            android:background="@color/green"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" />
+            android:layout_height="252dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="@drawable/green_square"
+            android:orientation="horizontal"
+            android:paddingStart="14dp"
+            android:paddingTop="15dp"
+            android:paddingEnd="14dp"
+            android:paddingBottom="14dp"
+            android:rotationX="8" />
 
     </LinearLayout>
 
