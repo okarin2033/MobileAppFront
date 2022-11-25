@@ -9,8 +9,13 @@
     <color name="dark_blue">#0B2747</color>
     <color name="light_blue">#5E93D0</color>
     <color name="menu_color">#1E6DC6</color>
-    <color name="grey_blue">#203247</color>
+
     <color name="light_grey_blue">#165194</color>
     <color name="white">#FFFFFF</color>
-
+    //new color design
+    <color name="grey_blue">#203247</color>
+    <color name ="grey_yellow">#F2CA96</color>color>
+    <color name ="green">#8FB9AA</color>color>
+    <color name ="grey_green">#B0D1CB</color>color>
+    <color name ="grey_blue_green">#8EB0BB</color>color>
 </resources>
