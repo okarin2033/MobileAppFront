@@ -1,10 +1,16 @@
-package ru.mirea.mobilefront.fragments;
+package ru.mirea.mobilefront.design;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
+
+import ru.mirea.mobilefront.fragments.BasketFragment;
+import ru.mirea.mobilefront.fragments.BookFragment;
+import ru.mirea.mobilefront.fragments.MenuFragment;
+import ru.mirea.mobilefront.fragments.ProfileFragment;
+import ru.mirea.mobilefront.fragments.SearchFragment;
 
 public class MyFragmentAdapter extends FragmentStateAdapter {
 

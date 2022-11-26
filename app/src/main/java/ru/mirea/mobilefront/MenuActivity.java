@@ -8,7 +8,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
 
-import ru.mirea.mobilefront.fragments.MyFragmentAdapter;
+import ru.mirea.mobilefront.design.MyFragmentAdapter;
 
 public class MenuActivity extends FragmentActivity {
 

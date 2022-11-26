@@ -40,6 +40,8 @@ public class UserService {
                 userSession.setToken(token);
                 userSession.setUsername(response.body().getUsername());
                 userSession.setEmail(response.body().getEmail());
+                userSession.setAddress(response.body().getAddress());
+                userSession.setPhone(response.body().getPhone());
                 sessionData.postValue(userSession);
                 Log.d("auth", userSession.toString());
 
@@ -48,6 +50,46 @@ public class UserService {
             @Override
             public void onFailure(Call<UserDto> call, Throwable t) {
                 Log.d("error", "Error on getting User Data with token");
+            }
+        });
+    }
+
+    public void updateUserPhone(String phone){
+        UserDto dto = new UserDto();
+        dto.setPhone(phone);
+        Call<UserDto> call = userApi
+                .updatePhone(sessionData.getValue().getToken(), dto);
+        call.enqueue(new Callback<UserDto>() {
+            @Override
+            public void onResponse(Call<UserDto> call, Response<UserDto> response) {
+                UserSession session = sessionData.getValue();
+                session.setPhone(response.body().getPhone());
+                sessionData.postValue(session);
+            }
+
+            @Override
+            public void onFailure(Call<UserDto> call, Throwable t) {
+                Log.d("error", "Error on updating phone");
+            }
+        });
+    }
+
+    public void updateUserAddress(String address){
+        UserDto dto = new UserDto();
+        dto.setAddress(address);
+        Call<UserDto> call = userApi
+                .updateAddress(sessionData.getValue().getToken(), dto);
+        call.enqueue(new Callback<UserDto>() {
+            @Override
+            public void onResponse(Call<UserDto> call, Response<UserDto> response) {
+                UserSession session = sessionData.getValue();
+                session.setAddress(response.body().getAddress());
+                sessionData.postValue(session);
+            }
+
+            @Override
+            public void onFailure(Call<UserDto> call, Throwable t) {
+                Log.d("error", "Error on updating phone");
             }
         });
     }

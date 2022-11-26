@@ -11,6 +11,8 @@ public class UserSession {
     private String token;
     private String username;
     private String email;
+    private String phone;
+    private String address;
     private RoleEnum role;
 
     public static MutableLiveData<UserSession> getUserSession(){
