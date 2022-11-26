@@ -22,17 +22,52 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/add_button"
+        android:layout_width="37dp"
+        android:layout_height="26dp"
+        android:background="@drawable/ripple_btn"
+        android:drawableBottom="@drawable/plus_24"
+
+        android:fontFamily="@font/allerta"
+        android:textColor="@color/green"
+        android:textColorHint="@color/green"
+        android:textSize="12dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/book_card_name"
+        app:layout_constraintTop_toBottomOf="@+id/book_card_image"
+        app:layout_constraintVertical_bias="0.851" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/delete_button"
+        android:layout_width="37dp"
+        android:layout_height="26dp"
+        android:background="@drawable/ripple_btn"
+        android:drawableBottom="@drawable/minus_24"
+
+        android:fontFamily="@font/allerta"
+        android:textColor="@color/green"
+        android:textColorHint="@color/green"
+        android:textSize="12dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/book_card_name"
+        app:layout_constraintTop_toBottomOf="@+id/book_card_image"
+        app:layout_constraintVertical_bias="0.851" />
+
     <TextView
         android:id="@+id/book_card_name"
         android:layout_width="150dp"
         android:layout_height="49dp"
-        android:textColor="@color/grey_yellow"
         android:text="Название книги"
         android:textAlignment="center"
+        android:textColor="@color/grey_yellow"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/book_card_image"
         app:layout_constraintVertical_bias="0.0" />
