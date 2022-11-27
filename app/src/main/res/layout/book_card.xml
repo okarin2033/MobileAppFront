@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="150dp"
-    android:layout_height="220dp"
+    android:layout_height="290dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/book_card_style"
     app:layout_constraintCircleRadius="50dp"
@@ -23,52 +23,65 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/add_button"
-        android:layout_width="37dp"
-        android:layout_height="26dp"
-        android:background="@drawable/ripple_btn"
-        android:drawableBottom="@drawable/plus_24"
-
-        android:fontFamily="@font/allerta"
-        android:textColor="@color/green"
-        android:textColorHint="@color/green"
-        android:textSize="12dp"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/book_card_name"
-        app:layout_constraintTop_toBottomOf="@+id/book_card_image"
-        app:layout_constraintVertical_bias="0.851" />
-
-    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/delete_button"
         android:layout_width="37dp"
         android:layout_height="26dp"
+        android:layout_marginStart="16dp"
+
         android:background="@drawable/ripple_btn"
         android:drawableBottom="@drawable/minus_24"
-
         android:fontFamily="@font/allerta"
         android:textColor="@color/green"
+
         android:textColorHint="@color/green"
         android:textSize="12dp"
-
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/book_card_name"
+        app:layout_constraintVertical_bias="0.852" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/add_button"
+        android:layout_width="37dp"
+        android:layout_height="26dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/ripple_btn"
+
+        android:drawableBottom="@drawable/plus_24"
+        android:fontFamily="@font/allerta"
+        android:textColoint="@color/green"
+        android:textColor="@color/green"
+
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/book_card_name"
-        app:layout_constraintTop_toBottomOf="@+id/book_card_image"
-        app:layout_constraintVertical_bias="0.851" />
+        app:layout_constraintTop_toBottomOf="@+id/book_card_name"
+        app:layout_constraintVertical_bias="0.852" />
 
     <TextView
         android:id="@+id/book_card_name"
         android:layout_width="150dp"
-        android:layout_height="49dp"
+        android:layout_height="70dp"
         android:text="Название книги"
         android:textAlignment="center"
         android:textColor="@color/grey_yellow"
 
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/book_card_image"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/book_card_image" />
+
+    <EditText
+        android:id="@+id/editTextNumber"
+        android:layout_width="25dp"
+        android:layout_height="28dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/add_button"
+        app:layout_constraintStart_toEndOf="@+id/delete_button"
+        app:layout_constraintTop_toBottomOf="@+id/book_card_name"
+        app:layout_constraintVertical_bias="0.843" />
 </androidx.constraintlayout.widget.ConstraintLayout>
