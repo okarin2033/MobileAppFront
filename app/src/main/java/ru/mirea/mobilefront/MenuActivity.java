@@ -1,7 +1,10 @@
 package ru.mirea.mobilefront;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
@@ -15,6 +18,10 @@ public class MenuActivity extends FragmentActivity {
       private TabLayout tabLayout;
       private ViewPager2 viewPager2;
       private MyFragmentAdapter adapter;
+      AppCompatButton minus_btn;
+      AppCompatButton plus_btn;
+      EditText num_btn;
+      int number_of_click=0;
 
 //    private static final int NUM_PAGES=5;
 
@@ -31,6 +38,8 @@ public class MenuActivity extends FragmentActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         adapter=new MyFragmentAdapter(fragmentManager,getLifecycle());
         viewPager2.setAdapter(adapter);
+
+
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -56,7 +65,25 @@ public class MenuActivity extends FragmentActivity {
         });
 
 
+        }
+
+//        num_btn= (EditText) findViewById(R.id.editTextNumber);
+//        minus_btn= (AppCompatButton) findViewById(R.id.delete_button);
+//        plus_btn=(AppCompatButton) findViewById(R.id.add_button);
+
+            public void onClick(View view) {
+                num_btn= (EditText) findViewById(R.id.editTextNumber);
+                number_of_click++;
+                num_btn.setText(number_of_click);
+            }
 
 
-    }
+
+
+
+
+
+
+
+
 }

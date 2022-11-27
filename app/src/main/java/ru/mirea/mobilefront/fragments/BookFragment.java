@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
@@ -30,6 +32,10 @@ public class BookFragment extends Fragment {
     BookService bookService = new BookService();
     MutableLiveData<List<BookSimple>> newBooksList;
     MutableLiveData<List<BookSimple>> topBooksList;
+
+
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,6 +49,9 @@ public class BookFragment extends Fragment {
         topBooksView = view.findViewById(R.id.top_books_view);
         newBooksList = BookService.getNewBooksList();
         topBooksList = BookService.getBestBooksList();
+
+
+
 
         RecyclerView.LayoutManager layoutManager = new
                 LinearLayoutManager(view.getContext()
@@ -81,5 +90,8 @@ public class BookFragment extends Fragment {
         bookService.updateBestBooks();
         bookService.updateNewBooks();
     }
+
+
+
 
 }
