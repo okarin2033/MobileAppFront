@@ -14,28 +14,31 @@
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="16dp">
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/log_back_gradient"
             android:orientation="vertical"
+            android:gravity="center"
             android:showDividers="middle">
 
             <LinearLayout
                 android:id="@+id/linearLayout1"
                 android:layout_width="378dp"
                 android:layout_height="380dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
 
 
-                android:layout_marginEnd="16dp"
+                android:layout_marginRight="10dp"
                 android:divider="@drawable/divider_vertical_res"
                 android:orientation="vertical"
                 android:showDividers="middle">

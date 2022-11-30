@@ -25,7 +25,7 @@
         android:layout_height="26dp"
         android:layout_marginStart="16dp"
 
-        android:background="@drawable/yellow_square"
+        android:background="@drawable/ripple_srch"
         android:drawableBottom="@drawable/minus_24"
         android:fontFamily="@font/allerta"
         android:textColor="@color/green"
@@ -42,7 +42,7 @@
         android:layout_width="37dp"
         android:layout_height="26dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/yellow_square"
+        android:background="@drawable/ripple_srch"
         android:drawableBottom="@drawable/plus_24"
         android:fontFamily="@font/allerta"
 
