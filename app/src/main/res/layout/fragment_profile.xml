@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/log_back_gradient"
+    android:background="@drawable/background_3"
     tools:context=".fragments.SearchFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,8 +23,8 @@
             android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:alpha="1"
             android:src="@drawable/human_100"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,16 +32,19 @@
 
         <TextView
             android:id="@+id/username_interface"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_width="139dp"
+            android:layout_height="87dp"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="12dp"
+            android:background="@drawable/ripple_btn_2"
+            android:padding="12dp"
             android:text="@string/non_auth_text"
+            android:textAlignment="center"
             android:textColor="@color/dark_blue"
-            android:textSize="20sp"
+            android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.54"
+            app:layout_constraintHorizontal_bias="0.885"
             app:layout_constraintStart_toEndOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,8 +54,8 @@
 
             android:layout_height="60dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="12dp"
-            android:background="@drawable/ripple_gradient"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/ripple_btn_2"
             android:src="@drawable/logout_32"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -65,26 +68,26 @@
             android:layout_height="32dp"
             android:layout_marginEnd="12dp"
             android:layout_marginBottom="2dp"
-            android:background="@drawable/ripple_gradient"
+            android:background="@drawable/ripple_btn_2"
             android:src="@drawable/edit_image"
             app:layout_constraintBottom_toBottomOf="@+id/phone_text"
             app:layout_constraintEnd_toStartOf="@+id/logout_button"
             app:layout_constraintTop_toTopOf="@+id/phone_text"
-            app:layout_constraintVertical_bias="0.333"
+            app:layout_constraintVertical_bias="1.0"
             tools:ignore="TouchTargetSizeCheck" />
 
         <ImageButton
             android:id="@+id/edit_address_button"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginEnd="12dp"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginEnd="32dp"
             android:layout_marginBottom="2dp"
-            android:background="@drawable/ripple_gradient"
+            android:background="@drawable/ripple_btn_2"
             android:src="@drawable/edit_image"
             app:layout_constraintBottom_toBottomOf="@+id/address_text"
             app:layout_constraintEnd_toStartOf="@+id/logout_button"
             app:layout_constraintTop_toTopOf="@+id/address_text"
-            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintVertical_bias="0.0"
             tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
@@ -118,6 +121,7 @@
             android:layout_height="0dp"
             android:ems="10"
             android:hint="Введите новый телефон"
+
             android:inputType="textPersonName|phone"
             android:textSize="14sp"
             android:visibility="invisible"
@@ -151,7 +155,7 @@
         android:layout_height="259dp"
         android:layout_marginTop="24dp"
         android:alpha="1"
-        android:background="@drawable/yellow_square"
+        android:background="@drawable/ripple_srch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
