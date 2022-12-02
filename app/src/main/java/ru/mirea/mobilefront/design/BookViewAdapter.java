@@ -1,5 +1,7 @@
 package ru.mirea.mobilefront.design;
 
+import android.app.Dialog;
+import android.app.Service;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import ru.mirea.mobilefront.MainActivity;
+import ru.mirea.mobilefront.MenuActivity;
 import ru.mirea.mobilefront.R;
 import ru.mirea.mobilefront.dto.BookSimple;
 
@@ -21,6 +25,7 @@ public class BookViewAdapter extends RecyclerView.Adapter<BookViewAdapter.BookVi
 
     Context context;
     List<BookSimple> bookList;
+    Dialog dialog;
 
     public BookViewAdapter(Context context, List<BookSimple> bookList) {
         this.context = context;
@@ -44,6 +49,12 @@ public class BookViewAdapter extends RecyclerView.Adapter<BookViewAdapter.BookVi
                 .error(R.drawable.book_100)
                 .into(holder.bookImage);
         // image from picasso
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String bookSrc = bookList.get(position).getUrl();
+            }
+        });
     }
 
     @Override

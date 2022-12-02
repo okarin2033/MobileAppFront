@@ -45,6 +45,13 @@ public class BookSearchViewAdapter extends RecyclerView.Adapter<BookSearchViewAd
                 .into(holder.bookImage);
         holder.bookAuthor.setText(bookList.get(position).getAuthor());
         // image from picasso
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String bookSrc = bookList.get(position).getUrl();
+
+            }
+        });
     }
 
     @Override
