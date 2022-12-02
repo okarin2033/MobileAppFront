@@ -53,5 +53,9 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
+    //custom library
+    // https://mvnrepository.com/artifact/com.github.denzcoskun/ImageSlideshow
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
+
 
 }

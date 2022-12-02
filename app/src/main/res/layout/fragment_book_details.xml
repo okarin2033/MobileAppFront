@@ -5,71 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/log_back_gradient"
-    tools:context=".fragments.SearchFragment">
+    tools:context=".fragments.BookDetailsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="394dp"
-        android:layout_height="589dp"
-        android:layout_marginTop="52dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:alpha="1"
         android:background="@drawable/yellow_square"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="115dp"
-            android:layout_height="113dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="24dp"
-            android:alpha="1"
-            android:src="@drawable/book_100"
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/image_slider"
+            android:layout_width="fill_parent"
+            android:layout_height="300dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            app:iss_auto_cycle="true"
+            app:iss_delay="0"
+            app:iss_period="1000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/book_panel_author"
-            android:layout_width="243dp"
-            android:layout_height="65dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:text="Автор"
-            android:textColor="@color/dark_blue"
-
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/book_panel_name"
-            android:layout_width="243dp"
-            android:layout_height="65dp"
-            android:layout_marginTop="8dp"
-            android:text="Название"
-            android:textColor="@color/dark_blue"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.333"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/book_panel_author" />
-
-        <TextView
-            android:id="@+id/book_panel_name2"
-            android:layout_width="364dp"
-            android:layout_height="200dp"
-            android:text="Описание"
-            android:textAlignment="center"
-            android:textColor="@color/dark_blue"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/book_panel_name" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

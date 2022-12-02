@@ -38,7 +38,7 @@ public class BookViewAdapter extends RecyclerView.Adapter<BookViewAdapter.BookVi
     public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {
         BookSimple book = bookList.get(position);
         holder.bookName.setText(book.getName());
-        Picasso.with(context)
+        Picasso.get()
                 .load(book.getImageUrl())
                 .placeholder(R.drawable.book_100)
                 .error(R.drawable.book_100)
