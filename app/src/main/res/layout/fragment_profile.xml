@@ -7,6 +7,12 @@
     android:background="@drawable/background_3"
     tools:context=".fragments.SearchFragment">
 
+    <VideoView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/back_anim"
+    />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="310dp"
