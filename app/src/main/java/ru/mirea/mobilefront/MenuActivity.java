@@ -1,8 +1,8 @@
 package ru.mirea.mobilefront;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.widget.AppCompatButton;
@@ -12,27 +12,30 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
 
+import ru.mirea.mobilefront.databinding.FragmentFullBookBinding;
 import ru.mirea.mobilefront.design.MyFragmentAdapter;
 
 public class MenuActivity extends FragmentActivity {
 
+      private FragmentFullBookBinding fullBookBinding;
+
       private TabLayout tabLayout;
       private ViewPager2 viewPager2;
       private MyFragmentAdapter adapter;
-      AppCompatButton minus_btn;
-      AppCompatButton plus_btn;
-      EditText num_btn;
-      int number_of_click=0;
-
+      private AppCompatButton minus_btn;
+      private AppCompatButton plus_btn;
+      private EditText num_btn;
+      private Button closeFullBookButton;
 //    private static final int NUM_PAGES=5;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        fullBookBinding = FragmentFullBookBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_menu);
         tabLayout=findViewById(R.id.tabLayout);
-        viewPager2=findViewById(R.id.viewPager2);
+        viewPager2=findViewById(R.id.full_book_frame);
 
         viewPager2.setUserInputEnabled(false); //отключение возможности скролить пальцем, оставляя только меню
 
@@ -58,6 +61,7 @@ public class MenuActivity extends FragmentActivity {
 
             }
         });
+
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
@@ -66,24 +70,16 @@ public class MenuActivity extends FragmentActivity {
         });
 
 
-        }
-
-//        num_btn= (EditText) findViewById(R.id.editTextNumber);
-//        minus_btn= (AppCompatButton) findViewById(R.id.delete_button);
-//        plus_btn=(AppCompatButton) findViewById(R.id.add_button);
-
+    //Меню полной книги
+        closeFullBookButton = fullBookBinding.closeButtonFullBook;
+        closeFullBookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
-                num_btn= (EditText) findViewById(R.id.editTextNumber);
-                number_of_click++;
-                num_btn.setText(number_of_click);
+                System.out.println("Niggeer");
+                fullBookBinding.fullBookContainer.setVisibility(View.GONE);
             }
-
-
-
-
-
-
-
+        });
+    }
 
 
 

@@ -9,6 +9,7 @@
     tools:context=".MainActivity">
 
 
+
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/back_gif_image"
         android:layout_width="fill_parent"
