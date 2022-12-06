@@ -4,9 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/log_back_gradient"
+
 
     tools:context=".fragments.SearchFragment">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_2"
+        android:scaleX="-1"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/log_back_gradient"
+        android:alpha="0.6"
+        />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/book_search_button"

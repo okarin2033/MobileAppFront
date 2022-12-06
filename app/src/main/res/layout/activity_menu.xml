@@ -30,7 +30,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         tools:context=".MenuActivity"
-        tools:targetApi="s" />
+        tools:targetApi="s"
+        />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
@@ -41,15 +42,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:tabIndicatorAnimationMode="elastic"
-        app:tabMode="auto">
+        app:tabMode="auto"
+
+        >
+
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/black"
             android:icon="@drawable/book_panel_24"
-
-            tools:layout_editor_absoluteX="149dp"
-            tools:layout_editor_absoluteY="241dp" />
+            tools:layout_editor_absoluteX="25dp"
+            tools:layout_editor_absoluteY="682dp" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
