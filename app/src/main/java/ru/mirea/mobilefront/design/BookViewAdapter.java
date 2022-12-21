@@ -20,6 +20,7 @@ import ru.mirea.mobilefront.MainActivity;
 import ru.mirea.mobilefront.MenuActivity;
 import ru.mirea.mobilefront.R;
 import ru.mirea.mobilefront.dto.BookSimple;
+import ru.mirea.mobilefront.service.BookService;
 
 public class BookViewAdapter extends RecyclerView.Adapter<BookViewAdapter.BookViewHolder> {
 
@@ -53,6 +54,7 @@ public class BookViewAdapter extends RecyclerView.Adapter<BookViewAdapter.BookVi
             @Override
             public void onClick(View view) {
                 String bookSrc = bookList.get(position).getUrl();
+                BookService.getFullBookData(bookSrc);
             }
         });
     }

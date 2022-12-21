@@ -10,12 +10,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import ru.mirea.mobilefront.MenuActivity;
 import ru.mirea.mobilefront.R;
 import ru.mirea.mobilefront.dto.BookSimple;
+import ru.mirea.mobilefront.service.BookService;
 
 public class BookSearchViewAdapter extends RecyclerView.Adapter<BookSearchViewAdapter.BookViewHolder> {
 
@@ -49,7 +52,7 @@ public class BookSearchViewAdapter extends RecyclerView.Adapter<BookSearchViewAd
             @Override
             public void onClick(View view) {
                 String bookSrc = bookList.get(position).getUrl();
-
+                BookService.getFullBookData(bookSrc);
             }
         });
     }

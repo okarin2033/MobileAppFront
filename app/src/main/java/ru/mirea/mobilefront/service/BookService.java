@@ -18,17 +18,19 @@ import ru.mirea.mobilefront.dto.BookSimple;
 import ru.mirea.mobilefront.service.retrofit.BookApi;
 
 public class BookService {
-    Retrofit retrofit = new Retrofit.Builder().baseUrl(Configuration.SERVER_URL)
+    static Retrofit retrofit = new Retrofit.Builder().baseUrl(Configuration.SERVER_URL)
             .addConverterFactory(JacksonConverterFactory.create())
             .build();
-    BookApi bookApi = retrofit.create(BookApi.class);
+    static BookApi bookApi = retrofit.create(BookApi.class);
 
     @Getter
     private static final MutableLiveData<List<BookSimple>> bestBooksList = new MutableLiveData<>();
     @Getter
     private static final MutableLiveData<List<BookSimple>> newBooksList = new MutableLiveData<>();
+    @Getter
+    private static final MutableLiveData<BookFull> currentChosenBook = new MutableLiveData<>();
 
-    public void updateBestBooks(){
+    public static void updateBestBooks(){
         List<BookSimple> bookList = new ArrayList<>();
         Call<List<BookSimple>> call = bookApi.getBestBooks();
         call.enqueue(new Callback<List<BookSimple>>() {
@@ -46,7 +48,7 @@ public class BookService {
         });
     }
 
-    public void updateNewBooks(){
+    public static void updateNewBooks(){
         Call<List<BookSimple>> call = bookApi.getNewBooks();
         call.enqueue(new Callback<List<BookSimple>>() {
             @Override
@@ -66,7 +68,7 @@ public class BookService {
     @Getter
     private static final MutableLiveData<List<BookSimple>> searchBookList = new MutableLiveData<List<BookSimple>>();
 
-    public void searchForBook(String request){
+    public static void searchForBook(String request){
         Call<List<BookSimple>> call = bookApi.searchForBook(request);
         call.enqueue(new Callback<List<BookSimple>>() {
             @Override
@@ -82,15 +84,22 @@ public class BookService {
         });
     }
 
-    @Getter
-    private static final MutableLiveData<BookFull> fullBookData =  new MutableLiveData<BookFull>();
-    public void getFullBookData(String url) {
+    public static void getFullBookData(String url) {
+
+        {
+            int startIndex = url.indexOf("product/") + "product/".length();
+            int endIndex = url.lastIndexOf("/");
+            url = url.substring(startIndex, endIndex);
+        } //String reformatting
+
         Call<BookFull> call = bookApi.getBook(url);
+
         call.enqueue(new Callback<BookFull>() {
             @Override
             public void onResponse(Call<BookFull> call, Response<BookFull> response) {
                 BookFull book = response.body();
-                fullBookData.postValue(book);
+                System.out.println(book);
+                currentChosenBook.postValue(book);
             }
 
             @Override
