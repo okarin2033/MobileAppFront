@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.AppCompatButton;
@@ -20,6 +22,8 @@ import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.tabs.TabLayout;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -42,6 +46,7 @@ public class MenuActivity extends FragmentActivity {
 //    private static final int NUM_PAGES=5;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,30 +101,49 @@ public class MenuActivity extends FragmentActivity {
 
     //Тут все связанное с логикой нижней панели.
     private ImageSlider imageSlider;
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public void bottomSheetLogic(BottomSheetBehavior<View> bottomSheetBehavior, FrameLayout frameLayout){
+
+        TextView textBookName = findViewById(R.id.text_book_name);
+        TextView textArticul = findViewById(R.id.text_articul);
+        TextView textAuthor = findViewById(R.id.text_author);
+        TextView textPrice = findViewById(R.id.text_price);
+        TextView textGenre = findViewById(R.id.text_genre);
+        TextView textDescription = findViewById(R.id.text_description_book);
         bottomSheetBehavior.setPeekHeight(0);
-        Button closeButtonFullBook = frameLayout.findViewById(R.id.close_button_full_book);
         imageSlider = findViewById(R.id.image_slider);
         ArrayList<SlideModel> imageList = new ArrayList<SlideModel>();
 
-        closeButtonFullBook.setOnClickListener(new View.OnClickListener() {
+       /* closeButtonFullBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
             }
-        });
+        }); */
 
         BookService.getCurrentChosenBook().observe(this, new Observer<BookFull>() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onChanged(BookFull bookFull) {
+                textBookName.setText(bookFull.getBookName()); //Book name set
                 imageList.clear();
                 bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
                 bookFull.getImageUrl()
                         .forEach(a -> imageList.add(new SlideModel(a, ScaleTypes.CENTER_INSIDE)));
                 imageSlider.setImageList(imageList);
+
+                //Description set
+                textArticul.setText(bookFull.getArticul());
+                textAuthor.setText(bookFull.getAuthor());
+                textPrice.setText(String.valueOf(bookFull.getPrice()));
+                textGenre.setText(bookFull.getGenre());
+                textDescription.setText(bookFull.getDescription());
             }
+
         });
+        ScrollView descriptionScrollView = findViewById(R.id.description_scroll_view);
+
+
     }
 
     public static BottomSheetBehavior<View> getStaticBottomSheetBehavior(){
