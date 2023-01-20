@@ -15,7 +15,9 @@
         <entry key="..\:/MobileAppFront/app/src/main/res/drawable/log_back_gradient.xml" value="0.1" />
         <entry key="..\:/MobileAppFront/app/src/main/res/drawable/login_style.xml" value="0.227" />
         <entry key="..\:/MobileAppFront/app/src/main/res/drawable/ripple_btn.xml" value="0.1" />
+        <entry key="..\:/MobileAppFront/app/src/main/res/drawable/ripple_gradient.xml" value="0.1495" />
         <entry key="..\:/MobileAppFront/app/src/main/res/drawable/ripple_srch.xml" value="0.1" />
+        <entry key="..\:/MobileAppFront/app/src/main/res/drawable/ripple_srch_blue.xml" value="0.1495" />
         <entry key="..\:/MobileAppFront/app/src/main/res/drawable/yellow_square.xml" value="0.1" />
         <entry key="..\:/MobileAppFront/app/src/main/res/layout/activity_for_blur.xml" value="0.25" />
         <entry key="..\:/MobileAppFront/app/src/main/res/layout/activity_main.xml" value="0.264" />
@@ -26,7 +28,7 @@
         <entry key="..\:/MobileAppFront/app/src/main/res/layout/fragment_basket.xml" value="0.12360688956433637" />
         <entry key="..\:/MobileAppFront/app/src/main/res/layout/fragment_book.xml" value="0.1" />
         <entry key="..\:/MobileAppFront/app/src/main/res/layout/fragment_book_details.xml" value="0.264" />
-        <entry key="..\:/MobileAppFront/app/src/main/res/layout/fragment_full_book.xml" value="0.264" />
+        <entry key="..\:/MobileAppFront/app/src/main/res/layout/fragment_full_book.xml" value="0.5" />
         <entry key="..\:/MobileAppFront/app/src/main/res/layout/fragment_full_book_test.xml" value="0.20104166666666667" />
         <entry key="..\:/MobileAppFront/app/src/main/res/layout/fragment_item.xml" value="0.16666666666666666" />
         <entry key="..\:/MobileAppFront/app/src/main/res/layout/fragment_item_list_dialog_list_dialog.xml" value="0.25" />

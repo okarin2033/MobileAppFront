@@ -1,5 +1,6 @@
 package ru.mirea.mobilefront;
 
+import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +22,7 @@ import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.tabs.TabLayout;
 
 import org.w3c.dom.Text;
@@ -101,6 +103,10 @@ public class MenuActivity extends FragmentActivity {
 
     //Тут все связанное с логикой нижней панели.
     private ImageSlider imageSlider;
+    private MaterialButton plusButton;
+    private MaterialButton minusButton;
+    private EditText countText;
+    private TextView finalSumText;
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void bottomSheetLogic(BottomSheetBehavior<View> bottomSheetBehavior, FrameLayout frameLayout){
 
@@ -110,6 +116,10 @@ public class MenuActivity extends FragmentActivity {
         TextView textPrice = findViewById(R.id.text_price);
         TextView textGenre = findViewById(R.id.text_genre);
         TextView textDescription = findViewById(R.id.text_description_book);
+        plusButton = findViewById(R.id.change_count_plus);
+        minusButton = findViewById(R.id.change_count_minus);
+        countText = findViewById(R.id.edit_count_books);
+        finalSumText = findViewById(R.id.final_summ_view);
         bottomSheetBehavior.setPeekHeight(0);
         imageSlider = findViewById(R.id.image_slider);
         ArrayList<SlideModel> imageList = new ArrayList<SlideModel>();
@@ -120,6 +130,27 @@ public class MenuActivity extends FragmentActivity {
                 bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
             }
         }); */
+        plusButton.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View view) {
+                BookService.getCurrentChosenBook().getValue().getPrice();
+                int count = Integer.parseInt(countText.getText().toString())+1;
+                countText.setText(String.valueOf(count));
+                finalSumText.setText("Общая стоимость: "+ String.valueOf(BookService.getCurrentChosenBook().getValue().getPrice()*count)+" руб.");
+            }
+        });
+
+        minusButton.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View view) {
+                BookService.getCurrentChosenBook().getValue().getPrice();
+                int count = Integer.parseInt(countText.getText().toString())-1;
+                countText.setText(String.valueOf(count));
+                finalSumText.setText("Общая стоимость: "+ String.valueOf(BookService.getCurrentChosenBook().getValue().getPrice()*count)+" руб.");
+            }
+        });
 
         BookService.getCurrentChosenBook().observe(this, new Observer<BookFull>() {
             @RequiresApi(api = Build.VERSION_CODES.N)

@@ -11,7 +11,8 @@
 
     <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
@@ -21,9 +22,9 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="32dp"
-            android:paddingBottom="32dp"
             android:alpha="1"
             android:background="@drawable/yellow_square"
+            android:paddingBottom="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.504"
@@ -69,9 +70,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image_slider">
+                app:layout_constraintTop_toBottomOf="@+id/final_summ_view">
+
                 <TableRow>
 
                     <TextView
@@ -90,6 +92,7 @@
                         android:textSize="20sp"
                         android:textStyle="bold" />
                 </TableRow>
+
                 <TableRow>
 
                     <TextView
@@ -108,6 +111,7 @@
                         android:textSize="20sp"
                         android:textStyle="bold" />
                 </TableRow>
+
                 <TableRow>
 
                     <TextView
@@ -126,6 +130,7 @@
                         android:textSize="20sp"
                         android:textStyle="bold" />
                 </TableRow>
+
                 <TableRow>
 
                     <TextView
@@ -151,10 +156,12 @@
                 android:id="@+id/description_scroll_view"
                 android:layout_width="wrap_content"
                 android:layout_height="200dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:nestedScrollingEnabled = "true"
+                android:nestedScrollingEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tableLayout">
@@ -172,6 +179,68 @@
                     app:layout_constraintEnd_toEndOf="parent" />
             </ScrollView>
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/change_count_minus"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/ripple_gradient"
+                android:fontFamily="@font/allerta"
+                android:gravity="center"
+                android:textColor="@color/green"
+                android:textColorHint="@color/green"
+                app:backgroundTint="@color/light_blue"
+                app:icon="@drawable/minus_24"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconTint="#FFFFFF"
+                app:layout_constraintStart_toStartOf="@+id/image_slider"
+                app:layout_constraintTop_toBottomOf="@+id/image_slider" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/change_count_plus"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@drawable/ripple_gradient"
+                android:fontFamily="@font/allerta"
+                android:gravity="center"
+                android:textColor="@color/green"
+                android:textColorHint="@color/green"
+                android:textSize="12dp"
+                app:backgroundTint="@color/light_blue"
+                app:icon="@drawable/plus_24"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconTint="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/change_count_minus"
+                app:layout_constraintEnd_toEndOf="@+id/image_slider"
+                app:layout_constraintTop_toTopOf="@+id/change_count_minus" />
+
+            <EditText
+                android:id="@+id/edit_count_books"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@drawable/ripple_gradient"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="0"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="@+id/change_count_minus"
+                app:layout_constraintEnd_toStartOf="@+id/change_count_plus"
+                app:layout_constraintStart_toEndOf="@+id/change_count_minus"
+                app:layout_constraintTop_toTopOf="@+id/change_count_minus" />
+
+            <TextView
+                android:id="@+id/final_summ_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Общая стоимость: 0 руб."
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="@+id/change_count_minus"
+                app:layout_constraintTop_toBottomOf="@+id/change_count_minus" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
 </FrameLayout>
