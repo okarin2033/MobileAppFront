@@ -28,7 +28,7 @@
         android:layout_marginTop="52dp"
         android:alpha="1"
 
-        android:background="@drawable/yellow_square"
+        android:background="@drawable/light_brown_square"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"

@@ -23,7 +23,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="32dp"
             android:alpha="1"
-            android:background="@drawable/yellow_square"
+            android:background="@drawable/log_back_gradient"
             android:paddingBottom="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -33,19 +33,21 @@
 
             <TextView
                 android:id="@+id/text_book_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="347dp"
+                android:layout_height="51dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:background="@drawable/alpha_square"
+                android:background="@drawable/light_brown_square"
                 android:fontFamily="@font/allerta"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:text="Название книги"
-                android:textColor="#000000"
+                android:gravity="left|center"
+                android:textColor="@color/white"
+
                 android:textSize="24sp"
-                android:textStyle="bold"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -67,8 +69,8 @@
 
             <TableLayout
                 android:id="@+id/tableLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="318dp"
+                android:layout_height="112dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -81,8 +83,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
                         android:text="Номер: "
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/text_articul"
@@ -100,8 +102,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
                         android:text="Автор: "
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/text_author"
@@ -115,12 +117,13 @@
                 <TableRow>
 
                     <TextView
+                        a
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
                         android:text="Цена: "
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/text_price"
@@ -138,8 +141,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
                         android:text="Жанр: "
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/text_genre"
@@ -154,15 +157,16 @@
             <ScrollView
 
                 android:id="@+id/description_scroll_view"
-                android:layout_width="wrap_content"
-                android:layout_height="200dp"
+                android:layout_width="316dp"
+                android:layout_height="194dp"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="28dp"
                 android:layout_marginEnd="32dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:nestedScrollingEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tableLayout">
 
@@ -173,9 +177,12 @@
                     android:layout_marginStart="32dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="32dp"
+                    android:gravity="center"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
                     android:text="Описание книги"
+                    android:textColor="@color/white"
                     android:textSize="20sp"
-                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent" />
             </ScrollView>
 
@@ -184,12 +191,12 @@
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/ripple_gradient"
                 android:fontFamily="@font/allerta"
                 android:gravity="center"
-                android:textColor="@color/green"
-                android:textColorHint="@color/green"
-                app:backgroundTint="@color/light_blue"
+
+                app:backgroundTint="@null"
+                android:background="@drawable/light_brown_square"
+
                 app:icon="@drawable/minus_24"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
@@ -201,17 +208,15 @@
                 android:id="@+id/change_count_plus"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:background="@drawable/ripple_gradient"
+                app:backgroundTint="@null"
+                android:background="@drawable/light_brown_square"
                 android:fontFamily="@font/allerta"
                 android:gravity="center"
-                android:textColor="@color/green"
-                android:textColorHint="@color/green"
                 android:textSize="12dp"
-                app:backgroundTint="@color/light_blue"
                 app:icon="@drawable/plus_24"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
-                app:iconTint="#FFFFFF"
+                app:iconTint="@color/white"
                 app:layout_constraintBottom_toBottomOf="@+id/change_count_minus"
                 app:layout_constraintEnd_toEndOf="@+id/image_slider"
                 app:layout_constraintTop_toTopOf="@+id/change_count_minus" />
@@ -220,10 +225,13 @@
                 android:id="@+id/edit_count_books"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:background="@drawable/ripple_gradient"
+
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="0"
+                android:textColor="@color/white"
+                app:backgroundTint="@null"
+                android:background="@drawable/light_brown_square"
                 android:textAlignment="center"
                 app:layout_constraintBottom_toBottomOf="@+id/change_count_minus"
                 app:layout_constraintEnd_toStartOf="@+id/change_count_plus"
@@ -232,11 +240,16 @@
 
             <TextView
                 android:id="@+id/final_summ_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="296dp"
+                android:layout_height="40dp"
                 android:layout_marginTop="32dp"
-                android:text="Общая стоимость: 0 руб."
-                android:textSize="24sp"
+                android:background="@drawable/light_brown_square"
+                android:text="Общая стоимость: ___.__руб."
+                android:textSize="20dp"
+                android:gravity="left|center"
+                android:textColor="@color/grey_yellow"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
                 app:layout_constraintStart_toStartOf="@+id/change_count_minus"
                 app:layout_constraintTop_toBottomOf="@+id/change_count_minus" />
 

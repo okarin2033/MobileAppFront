@@ -20,4 +20,11 @@
     <color name ="green">#8FB9AA</color>color>
     <color name ="grey_green">#B0D1CB</color>color>
     <color name ="grey_blue_green">#8EB0BB</color>color
+
+    //new color design AGAIN (black type )
+    <color name="black_black_brown">#141211</color>
+    <color name="black_grey_brown">#211D1C</color>
+    <color name="light_brown">#382825</color>
+    <color name="light_grey_brown">#38312F</color>
+    <color name="black_brown">#2E2422</color>
 </resources>
