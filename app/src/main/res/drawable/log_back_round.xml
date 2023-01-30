@@ -4,11 +4,12 @@
         android:startColor="@color/light_brown"
 
         android:gradientRadius="390dp"
-        android:endColor="@color/black_black_brown"
+        android:endColor="@color/black"
 
         android:type="radial"
         android:angle="-90"
         />
-    log_back_gradient.xml
-
+   <corners
+       android:radius="22dp"
+       />
 </shape>

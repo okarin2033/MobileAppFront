@@ -23,7 +23,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="32dp"
             android:alpha="1"
-            android:background="@drawable/log_back_gradient"
+            android:background="@drawable/log_back_round"
             android:paddingBottom="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -33,17 +33,19 @@
 
             <TextView
                 android:id="@+id/text_book_name"
-                android:layout_width="347dp"
-                android:layout_height="51dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/light_brown_square"
                 android:fontFamily="@font/allerta"
+                android:gravity="fill|center"
                 android:paddingStart="16dp"
+                android:paddingTop="10dp"
                 android:paddingEnd="16dp"
+                android:paddingBottom="10dp"
                 android:text="Название книги"
-                android:gravity="left|center"
                 android:textColor="@color/white"
 
                 android:textSize="24sp"
@@ -91,8 +93,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
                 </TableRow>
 
                 <TableRow>
@@ -110,13 +112,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
                 </TableRow>
 
                 <TableRow>
 
                     <TextView
+                        
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -130,11 +133,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
                 </TableRow>
 
-                <TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="73dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -148,17 +153,22 @@
                         android:id="@+id/text_genre"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/ripple_srch"
                         android:fontFamily="sans-serif-medium"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:gravity="fill|center"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
                 </TableRow>
             </TableLayout>
+
 
             <ScrollView
 
                 android:id="@+id/description_scroll_view"
-                android:layout_width="316dp"
-                android:layout_height="194dp"
+                android:layout_width="0dp"
+                android:layout_height="218dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="28dp"
                 android:layout_marginEnd="32dp"
@@ -170,20 +180,21 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tableLayout">
 
+
                 <TextView
                     android:id="@+id/text_description_book"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="32dp"
-                    android:gravity="center"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
+
+
+                    android:gravity="fill"
+
                     android:text="Описание книги"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
             </ScrollView>
 
             <com.google.android.material.button.MaterialButton
@@ -222,20 +233,21 @@
                 app:iconTint="@color/white"
                 app:layout_constraintBottom_toBottomOf="@+id/change_count_minus"
                 app:layout_constraintEnd_toEndOf="@+id/image_slider"
-                app:layout_constraintTop_toTopOf="@+id/change_count_minus" />
+                app:layout_constraintTop_toTopOf="@+id/change_count_minus"
+                app:layout_constraintVertical_bias="1.0" />
 
             <EditText
                 android:id="@+id/edit_count_books"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
 
+                android:background="@drawable/light_brown_square"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="0"
+                android:textAlignment="center"
                 android:textColor="@color/white"
                 app:backgroundTint="@null"
-                android:background="@drawable/light_brown_square"
-                android:textAlignment="center"
                 app:layout_constraintBottom_toBottomOf="@+id/change_count_minus"
                 app:layout_constraintEnd_toStartOf="@+id/change_count_plus"
                 app:layout_constraintStart_toEndOf="@+id/change_count_minus"
@@ -243,18 +255,21 @@
 
             <TextView
                 android:id="@+id/final_summ_view"
-                android:layout_width="296dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="32dp"
+                android:layout_width="303dp"
+                android:layout_height="54dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="24dp"
                 android:background="@drawable/light_brown_square"
-                android:text="Общая стоимость: ___.__руб."
-                android:textSize="20dp"
-                android:gravity="left|center"
-                android:textColor="@color/grey_yellow"
+                android:gravity="center"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
+                android:text="Общая стоимость: 0.0 руб."
+                android:textColor="@color/grey_yellow"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="@+id/change_count_plus"
+                app:layout_constraintHorizontal_bias="0.473"
                 app:layout_constraintStart_toStartOf="@+id/change_count_minus"
-                app:layout_constraintTop_toBottomOf="@+id/change_count_minus" />
+                app:layout_constraintTop_toBottomOf="@+id/edit_count_books" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
