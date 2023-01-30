@@ -117,7 +117,7 @@
                 <TableRow>
 
                     <TextView
-                        a
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
@@ -191,12 +191,14 @@
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/allerta"
-                android:gravity="center"
-
-                app:backgroundTint="@null"
                 android:background="@drawable/light_brown_square"
+                android:fontFamily="@font/allerta"
 
+                android:gravity="center"
+                android:rotationX="0"
+
+                android:rotationY="-9"
+                app:backgroundTint="@null"
                 app:icon="@drawable/minus_24"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
@@ -208,11 +210,12 @@
                 android:id="@+id/change_count_plus"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                app:backgroundTint="@null"
                 android:background="@drawable/light_brown_square"
                 android:fontFamily="@font/allerta"
                 android:gravity="center"
+                android:rotationY="9"
                 android:textSize="12dp"
+                app:backgroundTint="@null"
                 app:icon="@drawable/plus_24"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
