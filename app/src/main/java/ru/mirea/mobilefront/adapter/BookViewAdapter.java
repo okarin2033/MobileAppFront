@@ -1,7 +1,6 @@
-package ru.mirea.mobilefront.design;
+package ru.mirea.mobilefront.adapter;
 
 import android.app.Dialog;
-import android.app.Service;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +15,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import ru.mirea.mobilefront.MainActivity;
-import ru.mirea.mobilefront.MenuActivity;
 import ru.mirea.mobilefront.R;
 import ru.mirea.mobilefront.dto.BookSimple;
 import ru.mirea.mobilefront.service.BookService;

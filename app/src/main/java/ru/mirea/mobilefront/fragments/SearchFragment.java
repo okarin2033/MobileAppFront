@@ -18,13 +18,10 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.List;
 
 import ru.mirea.mobilefront.R;
-import ru.mirea.mobilefront.design.BookSearchViewAdapter;
-import ru.mirea.mobilefront.design.BookViewAdapter;
+import ru.mirea.mobilefront.adapter.BookVerticalViewAdapter;
 import ru.mirea.mobilefront.dto.BookSimple;
 import ru.mirea.mobilefront.service.BookService;
 
@@ -61,7 +58,7 @@ public class SearchFragment extends Fragment {
             @Override
             public void onChanged(List<BookSimple> booksFound) {
                 //for (BookSimple book: bookSimples) System.out.println(book.toString());
-                BookSearchViewAdapter adapter = new BookSearchViewAdapter(view.getContext(), booksFound);
+                BookVerticalViewAdapter adapter = new BookVerticalViewAdapter(view.getContext(), booksFound);
                 searchBooksView.setAdapter(adapter);
             }
         });

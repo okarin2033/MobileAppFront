@@ -8,68 +8,69 @@
 
     tools:context=".fragments.BasketFragment">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/log_back_gradient"
-        android:alpha="0.6"
-        />
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="2" />
+        android:id="@+id/basket_fragment_title"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/light_brown_square"
+        android:paddingStart="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="15dp"
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-
+        android:text="Корзина"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="@+id/basket_tint_image"
+        tools:ignore="RtlSymmetry" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/basket_books_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="128dp"
+        android:background="@drawable/light_brown_square"
+        android:orientation="horizontal"
+        android:paddingStart="14dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="14dp"
+        android:paddingBottom="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/basket_fragment_title"
+        app:layout_constraintStart_toStartOf="@+id/basket_fragment_title"
+        app:layout_constraintTop_toBottomOf="@+id/basket_fragment_title" />
 
-            android:layout_marginEnd="16dp"
-            android:divider="@drawable/divider_vertical_res"
-            android:orientation="vertical"
-            android:showDividers="middle">
+    <ImageView
+        android:id="@+id/basket_tint_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.6"
+        android:background="@drawable/log_back_gradient" />
 
-            <TextView
-                android:id="@+id/new_books_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/light_brown_square"
-                android:paddingStart="15dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="15dp"
+    <TextView
+        android:id="@+id/final_basket_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/light_brown_square"
+        android:paddingStart="10dp"
 
-                android:text="Корзина"
-                android:textColor="@color/dark_blue"
-                android:textSize="20sp"
+        android:paddingTop="10dp"
+        android:paddingBottom="15dp"
+        android:text="Сначала добавьте товар в корзину..."
 
-                tools:ignore="RtlSymmetry" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/new_books_view"
-                android:layout_width="wrap_content"
-                android:layout_height="297dp"
-                android:layout_marginHorizontal="8dp"
-                android:background="@drawable/light_brown_square"
-                android:orientation="horizontal"
-                android:paddingStart="14dp"
-                android:paddingTop="15dp"
-                android:paddingEnd="14dp"
-                android:paddingBottom="14dp" />
-        </LinearLayout>
-    </ScrollView>
-
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/basket_books_view"
+        app:layout_constraintStart_toStartOf="@+id/basket_books_view"
+        app:layout_constraintTop_toBottomOf="@+id/basket_books_view"
+        tools:ignore="RtlSymmetry" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

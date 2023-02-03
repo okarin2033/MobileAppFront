@@ -1,5 +1,6 @@
-package ru.mirea.mobilefront.design;
+package ru.mirea.mobilefront.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,22 +11,28 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
-import ru.mirea.mobilefront.MenuActivity;
+import lombok.Getter;
+import lombok.Setter;
 import ru.mirea.mobilefront.R;
+import ru.mirea.mobilefront.dto.BookFull;
 import ru.mirea.mobilefront.dto.BookSimple;
 import ru.mirea.mobilefront.service.BookService;
 
-public class BookSearchViewAdapter extends RecyclerView.Adapter<BookSearchViewAdapter.BookViewHolder> {
+public class BookVerticalBasketViewAdapter extends RecyclerView.Adapter<BookVerticalBasketViewAdapter.BookViewHolder> {
 
     Context context;
-    List<BookSimple> bookList;
+    @Setter
+    @Getter
+    HashMap<BookFull, Integer> bookList;
 
-    public BookSearchViewAdapter(Context context, List<BookSimple> bookList) {
+    public BookVerticalBasketViewAdapter(Context context, HashMap<BookFull, Integer> bookList) {
         this.context = context;
         this.bookList = bookList;
     }
@@ -38,21 +45,23 @@ public class BookSearchViewAdapter extends RecyclerView.Adapter<BookSearchViewAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {
-        BookSimple book = bookList.get(position);
-        holder.bookName.setText(book.getName());
+    public void onBindViewHolder(@NonNull BookViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        ArrayList<BookFull> books= new ArrayList<>(bookList.keySet());
+        BookFull book = books.get(position);
+        holder.bookName.setText(book.getBookName());
         Picasso.get()
-                .load(book.getImageUrl())
+                .load(book.getImageUrl().get(0))
                 .placeholder(R.drawable.book_100)
                 .error(R.drawable.book_100)
                 .into(holder.bookImage);
-        holder.bookAuthor.setText(bookList.get(position).getAuthor());
+        holder.bookAuthor.setText(books.get(position).getAuthor());
         // image from picasso
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String bookSrc = bookList.get(position).getUrl();
-                BookService.getFullBookData(bookSrc);
+                String bookSrc = books.get(position).getUrl();
+                System.out.println(bookSrc);
+                BookService.getFullBookData(bookSrc+"/");
             }
         });
     }

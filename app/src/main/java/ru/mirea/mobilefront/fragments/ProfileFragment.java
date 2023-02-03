@@ -16,6 +16,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
+import com.google.android.material.button.MaterialButton;
+
 import ru.mirea.mobilefront.MainActivity;
 import ru.mirea.mobilefront.R;
 import ru.mirea.mobilefront.service.AuthService;
@@ -32,7 +34,7 @@ public class ProfileFragment extends Fragment {
 
     UserService userService = new UserService();
 
-    ImageButton imageButton;
+    MaterialButton imageButton;
     TextView username;
 
     TextView phoneText;
@@ -41,8 +43,8 @@ public class ProfileFragment extends Fragment {
     EditText editPhoneText;
     EditText editAddressText;
 
-    ImageButton editAddressButton;
-    ImageButton editPhoneButton;
+    MaterialButton editAddressButton;
+    MaterialButton editPhoneButton;
 
     @Nullable
     @Override
@@ -53,13 +55,13 @@ public class ProfileFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        imageButton = (ImageButton) view.findViewById(R.id.logout_button);
+        imageButton = (MaterialButton) view.findViewById(R.id.logout_button);
         username = (TextView) view.findViewById(R.id.username_interface);
         phoneText = (TextView) view.findViewById(R.id.phone_text);
         addressText = (TextView) view.findViewById(R.id.address_text);
 
-        editAddressButton = (ImageButton) view.findViewById(R.id.edit_address_button);
-        editPhoneButton = (ImageButton) view.findViewById(R.id.edit_phone_button);
+        editAddressButton = (MaterialButton) view.findViewById(R.id.edit_address_button);
+        editPhoneButton = (MaterialButton) view.findViewById(R.id.edit_phone_button);
         editAddressText = (EditText) view.findViewById(R.id.edit_address_text);
         editPhoneText = (EditText) view.findViewById(R.id.edit_phone_text);
 
@@ -98,11 +100,11 @@ public class ProfileFragment extends Fragment {
                     if (phoneButtonPressed){
                         editPhoneText.setVisibility(View.VISIBLE);
                         phoneText.setVisibility(View.INVISIBLE);
-                        editPhoneButton.setImageResource(R.drawable.confirm_changes);
+                        //editPhoneButton.setImageResource(R.drawable.confirm_changes);
                     } else {
                         editPhoneText.setVisibility(View.INVISIBLE);
                         phoneText.setVisibility(View.VISIBLE);
-                        editPhoneButton.setImageResource(R.drawable.edit_image);
+                        //editPhoneButton.setImageResource(R.drawable.edit_image);
 
                         userService.updateUserPhone(editPhoneText.getText().toString());
                     }
@@ -116,11 +118,11 @@ public class ProfileFragment extends Fragment {
                     if (addressButtonPressed){
                         editAddressText.setVisibility(View.VISIBLE);
                         addressText.setVisibility(View.INVISIBLE);
-                        editAddressButton.setImageResource(R.drawable.confirm_changes);
+                        //editAddressButton.setImageResource(R.drawable.confirm_changes);
                     } else {
                         editAddressText.setVisibility(View.INVISIBLE);
                         addressText.setVisibility(View.VISIBLE);
-                        editAddressButton.setImageResource(R.drawable.edit_image);
+                        //editAddressButton.setImageResource(R.drawable.edit_image);
 
                         userService.updateUserAddress(editAddressText.getText().toString());
 

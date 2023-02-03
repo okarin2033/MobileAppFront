@@ -1,4 +1,4 @@
-package ru.mirea.mobilefront.design;
+package ru.mirea.mobilefront.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

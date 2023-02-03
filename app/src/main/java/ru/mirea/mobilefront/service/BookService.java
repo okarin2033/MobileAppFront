@@ -5,7 +5,9 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import lombok.Getter;
 import retrofit2.Call;
@@ -29,7 +31,8 @@ public class BookService {
     private static final MutableLiveData<List<BookSimple>> newBooksList = new MutableLiveData<>();
     @Getter
     private static final MutableLiveData<BookFull> currentChosenBook = new MutableLiveData<>();
-
+   // @Getter
+   // private static final MutableLiveData<ArrayList<BookFull>> basketBookList = new MutableLiveData<>();
     public static void updateBestBooks(){
         List<BookSimple> bookList = new ArrayList<>();
         Call<List<BookSimple>> call = bookApi.getBestBooks();
@@ -74,6 +77,7 @@ public class BookService {
             @Override
             public void onResponse(Call<List<BookSimple>> call, Response<List<BookSimple>> response) {
                 searchBookList.postValue(response.body());
+
             }
 
             @Override

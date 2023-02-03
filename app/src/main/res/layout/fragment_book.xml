@@ -46,7 +46,7 @@
                 android:showDividers="middle">
 
                 <TextView
-                    android:id="@+id/new_books_title"
+                    android:id="@+id/basket_fragment_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/light_brown_square"

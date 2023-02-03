@@ -3,6 +3,8 @@ package ru.mirea.mobilefront;
 import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -11,6 +13,7 @@ import android.widget.FrameLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.FragmentActivity;
@@ -25,13 +28,18 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.tabs.TabLayout;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
+import ru.mirea.mobilefront.adapter.BookTypeAdapter;
 import ru.mirea.mobilefront.databinding.FragmentFullBookBinding;
-import ru.mirea.mobilefront.design.MyFragmentAdapter;
+import ru.mirea.mobilefront.adapter.MyFragmentAdapter;
 import ru.mirea.mobilefront.dto.BookFull;
+import ru.mirea.mobilefront.fragments.BasketFragment;
+import ru.mirea.mobilefront.service.BasketService;
 import ru.mirea.mobilefront.service.BookService;
 
 public class MenuActivity extends FragmentActivity {
@@ -51,6 +59,7 @@ public class MenuActivity extends FragmentActivity {
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        BasketService.getBasketBookList().postValue(new HashMap<BookFull, Integer>());
         super.onCreate(savedInstanceState);
         fullBookBinding = FragmentFullBookBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_menu);
@@ -98,6 +107,7 @@ public class MenuActivity extends FragmentActivity {
             staticBottomSheetBehavior = bottomSheetBehavior;
 
         bottomSheetLogic(bottomSheetBehavior, layout);
+
     }
 
 
@@ -108,6 +118,8 @@ public class MenuActivity extends FragmentActivity {
     private EditText countText;
     private TextView finalSumText;
     @RequiresApi(api = Build.VERSION_CODES.M)
+
+
     public void bottomSheetLogic(BottomSheetBehavior<View> bottomSheetBehavior, FrameLayout frameLayout){
 
         TextView textBookName = findViewById(R.id.text_book_name);
@@ -137,7 +149,6 @@ public class MenuActivity extends FragmentActivity {
                 BookService.getCurrentChosenBook().getValue().getPrice();
                 int count = Integer.parseInt(countText.getText().toString())+1;
                 countText.setText(String.valueOf(count));
-                finalSumText.setText("Общая стоимость: "+ String.valueOf(BookService.getCurrentChosenBook().getValue().getPrice()*count)+" руб.");
             }
         });
 
@@ -148,11 +159,11 @@ public class MenuActivity extends FragmentActivity {
                 BookService.getCurrentChosenBook().getValue().getPrice();
                 int count = Integer.parseInt(countText.getText().toString())-1;
                 countText.setText(String.valueOf(count));
-                finalSumText.setText("Общая стоимость: "+ String.valueOf(BookService.getCurrentChosenBook().getValue().getPrice()*count)+" руб.");
             }
         });
 
         BookService.getCurrentChosenBook().observe(this, new Observer<BookFull>() {
+            @SuppressLint("SetTextI18n")
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onChanged(BookFull bookFull) {
@@ -164,6 +175,11 @@ public class MenuActivity extends FragmentActivity {
                 imageSlider.setImageList(imageList);
 
                 //Description set
+                if (BasketService.getBasketBookList().getValue().containsKey(bookFull)){
+                    int count = BasketService.getBasketBookList().getValue().get(bookFull);
+                    countText.setText(String.valueOf(count));
+                    finalSumText.setText("Общая стоимость: "+ String.valueOf(BookService.getCurrentChosenBook().getValue().getPrice()*count)+" руб.");
+                }
                 textArticul.setText(bookFull.getArticul());
                 textAuthor.setText(bookFull.getAuthor());
                 textPrice.setText(String.valueOf(bookFull.getPrice()));
@@ -174,7 +190,70 @@ public class MenuActivity extends FragmentActivity {
         });
         ScrollView descriptionScrollView = findViewById(R.id.description_scroll_view);
 
+        countText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                try {
+                    int number = Integer.parseInt(s.toString());
+                    if ((number < 0) || (number>100)) {
+                        countText.setText("0");
+                        finalSumText.setText("Товар пока не добавлен в корзину");
+
+                    }
+                    if ((number>0) && (number<=100)){
+                        finalSumText.setText("Общая стоимость: "+ String.valueOf(BookService.getCurrentChosenBook().getValue().getPrice()*number)+" руб.");
+
+                    }
+                    if (number==0){
+                        finalSumText.setText("Товар пока не добавлен в корзину");
+                    }
+                } catch (NumberFormatException e) {
+                    countText.setText("0");
+                    finalSumText.setText("Товар пока не добавлен в корзину");
+                }
+
+            }
+        });
+
+
+        bottomSheetBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                if (newState == BottomSheetBehavior.STATE_COLLAPSED){
+                    //добавить товар в корзину, счетчик в 0
+                    /*System.out.println(BookService.getCurrentChosenBook().getValue());
+                    /ArrayList<BookFull> basketList= BookService.getBasketBookList().getValue();
+                    if (!basketList.contains(BookService.getCurrentChosenBook().getValue())) {
+                        basketList.add(BookService.getCurrentChosenBook().getValue());
+                        BookService.getBasketBookList().postValue(basketList);
+                    }
+*/
+                    if (!countText.equals("0")) {
+                        HashMap<BookFull, Integer> basketData = BasketService.getBasketBookList().getValue();
+                        basketData.put(BookService.getCurrentChosenBook().getValue(), Integer.parseInt(countText.getText().toString()));
+                        BasketService.getBasketBookList().postValue(basketData);
+                    }
+
+                    countText.setText("0");
+                    finalSumText.setText("Товар пока не добавлен в корзину");
+                }
+            }
+
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+
+            }
+        });
     }
 
     public static BottomSheetBehavior<View> getStaticBottomSheetBehavior(){
