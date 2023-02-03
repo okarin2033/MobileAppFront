@@ -230,20 +230,20 @@ public class MenuActivity extends FragmentActivity {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
                 if (newState == BottomSheetBehavior.STATE_COLLAPSED){
-                    //добавить товар в корзину, счетчик в 0
-                    /*System.out.println(BookService.getCurrentChosenBook().getValue());
-                    /ArrayList<BookFull> basketList= BookService.getBasketBookList().getValue();
-                    if (!basketList.contains(BookService.getCurrentChosenBook().getValue())) {
-                        basketList.add(BookService.getCurrentChosenBook().getValue());
-                        BookService.getBasketBookList().postValue(basketList);
+
+                    if ((BasketService.getBasketBookList().getValue()
+                            .containsKey(BookService.getCurrentChosenBook().getValue())) && (Integer.parseInt(countText.getText().toString())==0)){
+                        HashMap<BookFull, Integer> basketData = BasketService.getBasketBookList().getValue();
+                        basketData.remove(BookService.getCurrentChosenBook().getValue());
+                        BasketService.getBasketBookList().postValue(basketData);
                     }
-*/
-                    if (!countText.equals("0")) {
+
+                    if (Integer.parseInt(countText.getText().toString())>0) {
                         HashMap<BookFull, Integer> basketData = BasketService.getBasketBookList().getValue();
                         basketData.put(BookService.getCurrentChosenBook().getValue(), Integer.parseInt(countText.getText().toString()));
                         BasketService.getBasketBookList().postValue(basketData);
                     }
-
+                    //сбросить текст
                     countText.setText("0");
                     finalSumText.setText("Товар пока не добавлен в корзину");
                 }
