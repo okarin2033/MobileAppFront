@@ -1,19 +1,12 @@
 package ru.mirea.mobilefront;
 
-import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.ScrollView;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.FragmentActivity;
@@ -21,25 +14,14 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.denzcoskun.imageslider.ImageSlider;
-import com.denzcoskun.imageslider.constants.ScaleTypes;
-import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.tabs.TabLayout;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
 
-import ru.mirea.mobilefront.adapter.BookTypeAdapter;
-import ru.mirea.mobilefront.adapter.BottomSheetManager;
-import ru.mirea.mobilefront.databinding.FragmentFullBookBinding;
 import ru.mirea.mobilefront.adapter.MyFragmentAdapter;
 import ru.mirea.mobilefront.dto.BookFull;
-import ru.mirea.mobilefront.fragments.BasketFragment;
+import ru.mirea.mobilefront.fragments.FullBookDialogFragment;
 import ru.mirea.mobilefront.service.BasketService;
 import ru.mirea.mobilefront.service.BookService;
 
@@ -53,7 +35,6 @@ public class MenuActivity extends FragmentActivity {
       private AppCompatButton plus_btn;
       private EditText num_btn;
       private Button closeFullBookButton;
-      private BottomSheetManager bottomSheetManager;
 //    private static final int NUM_PAGES=5;
 
 
@@ -98,18 +79,16 @@ public class MenuActivity extends FragmentActivity {
         });
 
 
-    //Меню полной книги
-        FrameLayout layout = findViewById(R.id.bottom_sheet);
-        layout.bringToFront();
-        BottomSheetBehavior<View> bottomSheetBehavior = BottomSheetBehavior.from(layout);
-
-        if (staticBottomSheetBehavior==null)
-            staticBottomSheetBehavior = bottomSheetBehavior;
-
-        bottomSheetManager = new BottomSheetManager(this, bottomSheetBehavior, layout);
-        //bottomSheetLogic(this, bottomSheetBehavior, layout);
-
+        BookService.getCurrentChosenBook().observe(this, new Observer<BookFull>() {
+            @Override
+            public void onChanged(BookFull bookFull) {
+                FullBookDialogFragment fullBookDialogFragment = FullBookDialogFragment.newInstance();
+                fullBookDialogFragment.show(getSupportFragmentManager(), bookFull.getBookName());
+            }
+        });
     }
+
+
 
 
     public static BottomSheetBehavior<View> getStaticBottomSheetBehavior(){

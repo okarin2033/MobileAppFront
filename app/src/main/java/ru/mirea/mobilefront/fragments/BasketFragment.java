@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,26 +13,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
 
-import lombok.Getter;
 import ru.mirea.mobilefront.R;
 import ru.mirea.mobilefront.adapter.BookVerticalBasketViewAdapter;
-import ru.mirea.mobilefront.adapter.BottomSheetManager;
 import ru.mirea.mobilefront.dto.BookFull;
-import ru.mirea.mobilefront.dto.BookSimple;
 import ru.mirea.mobilefront.service.BasketService;
-import ru.mirea.mobilefront.service.BookService;
 
 public class BasketFragment extends Fragment {
     private RecyclerView basketView;
