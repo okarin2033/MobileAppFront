@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +20,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
@@ -26,6 +29,7 @@ import java.util.Set;
 import lombok.Getter;
 import ru.mirea.mobilefront.R;
 import ru.mirea.mobilefront.adapter.BookVerticalBasketViewAdapter;
+import ru.mirea.mobilefront.adapter.BottomSheetManager;
 import ru.mirea.mobilefront.dto.BookFull;
 import ru.mirea.mobilefront.dto.BookSimple;
 import ru.mirea.mobilefront.service.BasketService;
@@ -70,13 +74,12 @@ public class BasketFragment extends Fragment {
 
                 basketFinalPrice.setText("Итоговая стоимость вашей корзины: "+ BasketService.getFinalCost()+" руб");
 
-
             }
         });
 
-
-
-
+    //Панель оплаты
+        PaymentDialogFragment paymentDialogFragment = PaymentDialogFragment.newInstance();
+        paymentDialogFragment.show(getParentFragmentManager(), "bottom_payment");
     }
 
 

@@ -45,7 +45,6 @@ import ru.mirea.mobilefront.service.BookService;
 
 public class MenuActivity extends FragmentActivity {
 
-      private FragmentFullBookBinding fullBookBinding;
       private static BottomSheetBehavior<View> staticBottomSheetBehavior;
       private TabLayout tabLayout;
       private ViewPager2 viewPager2;
@@ -63,7 +62,6 @@ public class MenuActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         BasketService.getBasketBookList().postValue(new HashMap<BookFull, Integer>());
         super.onCreate(savedInstanceState);
-        fullBookBinding = FragmentFullBookBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_menu);
         tabLayout=findViewById(R.id.tabLayout);
         viewPager2=findViewById(R.id.full_book_frame);
@@ -132,6 +130,17 @@ public class MenuActivity extends FragmentActivity {
 
     @Override
     public void onBackPressed() {
-        bottomSheetManager.onBackPressed(viewPager2);
+        if (staticBottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+            staticBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        } else {
+            int currentItem = viewPager2.getCurrentItem();
+            if (currentItem == 0) {
+                // If the user is currently on the first page of the ViewPager2, you can finish the activity.
+                super.onBackPressed();
+            } else {
+                // If the user is not on the first page, you can navigate back to the first page.
+                viewPager2.setCurrentItem(0, true);
+            }
+        }
     }
 }

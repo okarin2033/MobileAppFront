@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/fragment_full_book"
+    <include
+        layout="@layout/fragment_full_book"
         android:clickable="true"
         android:focusable="true" />
 
