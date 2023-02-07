@@ -28,7 +28,7 @@ public class MenuFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        webPageView = view.findViewById(R.id.web_view_page);
+        /*webPageView = view.findViewById(R.id.web_view_page);
         webPageView.setWebViewClient(new WebViewClient());
         webPageView.setBackgroundResource(R.drawable.log_back_gradient);
         webPageView.getSettings().setJavaScriptEnabled(true);
@@ -44,5 +44,6 @@ public class MenuFragment extends Fragment {
             }
         });
         webPageView.loadUrl("https://book24.ru/journal/");
+    }*/
     }
 }

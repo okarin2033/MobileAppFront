@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,7 +21,9 @@ import com.google.android.material.button.MaterialButton;
 
 import ru.mirea.mobilefront.MainActivity;
 import ru.mirea.mobilefront.R;
+import ru.mirea.mobilefront.dto.CardDto;
 import ru.mirea.mobilefront.service.AuthService;
+import ru.mirea.mobilefront.service.CardService;
 import ru.mirea.mobilefront.service.UserService;
 import ru.mirea.mobilefront.service.UserSession;
 
@@ -46,6 +49,10 @@ public class ProfileFragment extends Fragment {
     MaterialButton editAddressButton;
     MaterialButton editPhoneButton;
 
+    TextView bonus;
+    TextView level;
+    ImageView image;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -65,6 +72,9 @@ public class ProfileFragment extends Fragment {
         editAddressText = (EditText) view.findViewById(R.id.edit_address_text);
         editPhoneText = (EditText) view.findViewById(R.id.edit_phone_text);
 
+        level = view.findViewById(R.id.bonus_progression);
+        bonus = view.findViewById(R.id.bonus_amount);
+        image = view.findViewById(R.id.bonus_card_image);
 
         Intent intent = new Intent(getActivity(), MainActivity.class);
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -132,6 +142,41 @@ public class ProfileFragment extends Fragment {
 
 
         }
+
+        CardService.getBonusCard().observe(getViewLifecycleOwner(), new Observer<CardDto>() {
+            @Override
+            public void onChanged(CardDto cardDto) {
+                int userSpent = 0; //Прописать логику подсчет трат юзера
+                bonus.setText(String.valueOf(cardDto.getBonus()));
+                switch (cardDto.getPower()){
+                    case 6: {
+                        image.setImageResource(R.drawable.cashback_silver);
+                        level.setText(userSpent+"/20 000");
+                        break;
+                    }
+                    case 9: {
+                        image.setImageResource(R.drawable.cashback_gold);
+                        level.setText(userSpent+"/30 000");
+                        break;
+                    }
+                    case 12: {
+                        image.setImageResource(R.drawable.cashback_platinum);
+                        level.setText(userSpent+"/40 000");
+                        break;
+                    }
+                    case 15: {
+                        image.setImageResource(R.drawable.cashback_brilliant);
+                        level.setText("Максимум!");
+                        break;
+                    }
+
+                }
+            }
+        });
+
+
+        CardService.getCardData();
+
 
 
     }

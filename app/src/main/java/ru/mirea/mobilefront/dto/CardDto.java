@@ -6,5 +6,5 @@ import lombok.Data;
 @Data
 public class CardDto {
     int bonus;
-    String power;
+    int power;
 }

@@ -6,6 +6,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import ru.mirea.mobilefront.dto.CardDto;
 import ru.mirea.mobilefront.dto.TokenDto;
 import ru.mirea.mobilefront.dto.UserDto;
 
@@ -19,5 +20,11 @@ public interface UserApi {
 
     @PUT("/update/address")
     Call<UserDto> updateAddress(@Header("token") String token, @Body UserDto userDto);
+
+    @GET("/card/get")
+    Call<CardDto> getCard(@Header("token") String token);
+
+    @PUT("/card/put")
+    Call<CardDto> updateCard(@Header("token") String token, @Body CardDto cardDto);
 
 }
