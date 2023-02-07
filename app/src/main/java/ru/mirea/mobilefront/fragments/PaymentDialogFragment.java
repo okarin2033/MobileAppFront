@@ -1,22 +1,31 @@
 package ru.mirea.mobilefront.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import ru.mirea.mobilefront.R;
+import ru.mirea.mobilefront.dto.BookFull;
+import ru.mirea.mobilefront.service.BasketService;
 
 public class PaymentDialogFragment extends BottomSheetDialogFragment {
     public static PaymentDialogFragment newInstance(){
         return new PaymentDialogFragment();
     }
-
+    private LinearLayout finalBasket;
+    private TextView finalPriceText;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -28,6 +37,18 @@ public class PaymentDialogFragment extends BottomSheetDialogFragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
+        HashMap<BookFull, Integer> basket = BasketService.getBasketBookList().getValue();
+        finalBasket = view.findViewById(R.id.final_list_basket);
+        finalPriceText = view.findViewById(R.id.final_price_text);
+        for (Map.Entry<BookFull, Integer> entry : basket.entrySet()) {
+            BookFull book = entry.getKey();
+            Integer amount = entry.getValue();
+            TextView textView = new TextView(view.getContext());
+            textView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+            textView.setText(amount + " x " + book.getBookName() + " " + book.getPrice()+" ₽");
+            textView.setTextColor(Color.BLACK);
+            finalBasket.addView(textView);
+            finalPriceText.setText(BasketService.getFinalCost()+" ₽");
+        }
     }
 }

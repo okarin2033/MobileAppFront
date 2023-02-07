@@ -109,17 +109,13 @@ public class MenuActivity extends FragmentActivity {
 
     @Override
     public void onBackPressed() {
-        if (staticBottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
-            staticBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        int currentItem = viewPager2.getCurrentItem();
+        if (currentItem == 0) {
+            // If the user is currently on the first page of the ViewPager2, you can finish the activity.
+            super.onBackPressed();
         } else {
-            int currentItem = viewPager2.getCurrentItem();
-            if (currentItem == 0) {
-                // If the user is currently on the first page of the ViewPager2, you can finish the activity.
-                super.onBackPressed();
-            } else {
-                // If the user is not on the first page, you can navigate back to the first page.
-                viewPager2.setCurrentItem(0, true);
-            }
+            // If the user is not on the first page, you can navigate back to the first page.
+            viewPager2.setCurrentItem(0, true);
         }
     }
 }
