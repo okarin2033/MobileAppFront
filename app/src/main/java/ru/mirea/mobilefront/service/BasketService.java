@@ -25,6 +25,5 @@ public class BasketService {
             finalCost += book.getPrice() * bookCount;
         }
         return finalCost;
-
     }
 }
