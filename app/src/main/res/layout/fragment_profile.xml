@@ -35,16 +35,17 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="81dp"
-            android:layout_height="87dp"
+            android:layout_width="75dp"
+            android:layout_height="71dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:alpha="1"
             android:background="@drawable/alpha_square"
-            android:src="@drawable/person_24"
+            android:padding="1.1mm"
+            android:src="@drawable/human_100"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/white" />
+           />
 
         <TextView
             android:id="@+id/username_interface"
@@ -199,16 +200,16 @@
 
         <TextView
             android:id="@+id/block_title_orders"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="162dp"
+            android:layout_height="29dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:gravity="fill|center"
             android:text="Бонусная карта"
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.082"
+            app:layout_constraintHorizontal_bias="0.042"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -225,17 +226,18 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/logout_button"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="56dp"
+        android:layout_height="54dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
-        android:background="@drawable/black_brown_square"
+        android:background="@drawable/light_brown_square"
         android:fontFamily="@font/allerta"
 
         android:gravity="center"
-        android:paddingStart="20dp"
+
         app:backgroundTint="@null"
         app:icon="@drawable/logout_32"
+        android:padding="1.1mm"
 
 
         app:iconGravity="textStart"
