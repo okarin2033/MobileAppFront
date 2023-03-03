@@ -23,7 +23,6 @@ public class BookViewAdapter extends RecyclerView.Adapter<BookViewAdapter.BookVi
 
     Context context;
     List<BookSimple> bookList;
-    Dialog dialog;
 
     public BookViewAdapter(Context context, List<BookSimple> bookList) {
         this.context = context;

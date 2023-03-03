@@ -16,6 +16,7 @@ import androidx.annotation.RequiresApi;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,7 +24,7 @@ import ru.mirea.mobilefront.R;
 import ru.mirea.mobilefront.dto.BookFull;
 import ru.mirea.mobilefront.dto.OrderDto;
 import ru.mirea.mobilefront.service.BasketService;
-import ru.mirea.mobilefront.service.PaymentService;
+import ru.mirea.mobilefront.service.OrderService;
 
 public class PaymentDialogFragment extends BottomSheetDialogFragment {
     public static PaymentDialogFragment newInstance(){
@@ -65,8 +66,8 @@ public class PaymentDialogFragment extends BottomSheetDialogFragment {
                 HashMap<String, Integer> orderMap = new HashMap<>();
                 Map<BookFull, Integer> basketMap = BasketService.getBasketBookList().getValue();
                 basketMap.keySet().forEach(book -> orderMap.put(book.getBookName(), basketMap.get(book)));
-                OrderDto orderDto = new OrderDto(orderMap, BasketService.getFinalCost());
-                PaymentService.sendOrder(orderDto);
+                OrderDto orderDto = new OrderDto(orderMap, BasketService.getFinalCost(), new Date().toString());
+                OrderService.sendOrder(orderDto);
                 dismiss();
                 { //сбрасываем корзину
                     BasketService.getBasketBookList().postValue(new HashMap<BookFull, Integer>());
