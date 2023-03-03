@@ -3,10 +3,10 @@
 
 
     <gradient
-        android:startColor="@color/grey_blue"
+        android:startColor="@color/light_grey_brown"
 
         android:gradientRadius="420dp"
-        android:endColor="@color/light_brown"
+        android:endColor="@color/black_grey_brown"
 
         android:type="radial"
         android:angle="-90"
