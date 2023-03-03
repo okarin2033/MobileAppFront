@@ -43,10 +43,7 @@
                 android:background="@drawable/light_brown_square"
                 android:fontFamily="@font/allerta"
                 android:gravity="fill|center"
-                android:paddingStart="16dp"
-                android:paddingTop="10dp"
-                android:paddingEnd="16dp"
-                android:paddingBottom="10dp"
+                android:padding="10dp"
                 android:text="Название книги"
                 android:textColor="@color/white"
 
