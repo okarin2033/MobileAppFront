@@ -66,7 +66,6 @@ public class ProfileFragment extends Fragment {
         username = (TextView) view.findViewById(R.id.username_interface);
         phoneText = (TextView) view.findViewById(R.id.phone_text);
         addressText = (TextView) view.findViewById(R.id.address_text);
-
         editAddressButton = (MaterialButton) view.findViewById(R.id.edit_address_button);
         editPhoneButton = (MaterialButton) view.findViewById(R.id.edit_phone_button);
         editAddressText = (EditText) view.findViewById(R.id.edit_address_text);

@@ -72,6 +72,7 @@ public class BasketFragment extends Fragment {
 
                 basketFinalPrice.setText("Итоговая стоимость вашей корзины: "+ BasketService.getFinalCost()+" руб");
 
+
             }
         });
         //Панель оплаты
@@ -81,8 +82,6 @@ public class BasketFragment extends Fragment {
                 if (!BasketService.getBasketBookList().getValue().isEmpty()){
                     PaymentDialogFragment paymentDialogFragment = PaymentDialogFragment.newInstance();
                     //fill dialog
-
-
                     paymentDialogFragment.show(getParentFragmentManager(), "bottom_payment");
                 }
             }

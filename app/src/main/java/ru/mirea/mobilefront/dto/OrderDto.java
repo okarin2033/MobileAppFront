@@ -1,11 +1,17 @@
 package ru.mirea.mobilefront.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Map;
 
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class OrderDto {
-    private final Map<String, Integer> bookList;
-    private final double fullPrice;
+    private Map<String, Integer> bookList;
+    private double fullPrice;
+    private String date;
 }
